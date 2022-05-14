@@ -1,6 +1,11 @@
 <template>
   <div class="design-content">
     <header>
+      <div style="margin-right: 10px">
+        <el-button type="primary">Basic</el-button>
+        <el-button type="success">Query</el-button>
+        <el-button type="warning">Reset</el-button>
+      </div>
       <el-button-group class="ml-4">
         <el-button type="primary">Delete</el-button>
         <el-button type="primary">Preview</el-button>
@@ -23,21 +28,21 @@ export default {
 </script>
 <script setup name="form-content">
 import { reactive, ref } from 'vue';
-import emit from '@/utils/emit';
+import emit from '@/utils/emit.js';
 const renderOptions = ref([
-  // {
-  //   type: 'button',
-  //   id: 'dede',
-  // },
-  // {
-  //   type: 'input',
-  //   id: 'casascas',
-  // },
-  // {
-  //   type: 'grid',
-  //   id: 'asfdsf',
-  //   tasks: [[], []],
-  // },
+  {
+    type: 'Button',
+    id: 'sdsdfgsd',
+  },
+  {
+    type: 'Input',
+    id: 'fsdfsdfsd',
+  },
+  {
+    type: 'Grid',
+    id: 'dsfsdfsdfsd',
+    tasks: [[], []],
+  },
 ]);
 let dragType = '';
 let dragId = '';

@@ -39,8 +39,7 @@
 </template>
 
 <script lang="ts">
-import LabelItem from './components/label-item';
-import emit from '@/utils/emit';
+import LabelItem from './components/label-item/index.vue';
 import { reactive, ref, defineComponent } from 'vue';
 export default defineComponent({
   name: 'design-side',
@@ -48,9 +47,6 @@ export default defineComponent({
     LabelItem,
   },
   setup(props) {
-    const dragstart = (type) => {
-      emit.emit('dragstart', type, String(Math.random()));
-    };
     const containerComponents = reactive([
       {
         type: 'Grid',
@@ -112,7 +108,7 @@ export default defineComponent({
         icon: 'Operation',
       },
     ]);
-    const cloneData = (data) => {
+    const cloneData = (data: any) => {
       data = {
         ...data,
         id: String(Math.random()),
@@ -124,7 +120,6 @@ export default defineComponent({
     };
     const activeNames = ref(['container', 'basic']);
     return {
-      dragstart,
       basicComponents,
       containerComponents,
       cloneData,
