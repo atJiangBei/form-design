@@ -25,6 +25,7 @@
               item-key="id"
               v-model="basicComponents"
               :group="{ name: 'content', pull: 'clone', put: false }"
+              :clone="cloneData"
             >
               <template #item="{ element }">
                 <label-item :label="element.type" :icon="element.icon">
@@ -61,6 +62,15 @@ export default defineComponent({
         type: 'Button',
         id: 'asdasdas',
         icon: 'Tools',
+        options: {
+          name: '',
+          type: 'default',
+        },
+      },
+      {
+        type: 'Tag',
+        id: 'sdfdsfs',
+        icon: 'CollectionTag',
       },
       {
         type: 'Input',
@@ -98,19 +108,35 @@ export default defineComponent({
         icon: 'TurnOff',
       },
       {
+        type: 'Slider',
+        id: 'sdfsdfsdf',
+        icon: 'Operation',
+      },
+      {
         type: 'DatePicker',
         id: 'asdasdas',
         icon: 'Timer',
       },
       {
-        type: 'Slider',
-        id: 'sdfsdfsdf',
-        icon: 'Operation',
+        type: 'TimePicker',
+        id: 'asdasdasdas',
+        icon: 'Clock',
+      },
+      {
+        type: 'Image',
+        id: 'sdfsdgsd',
+        icon: 'Picture',
+      },
+      {
+        type: 'Link',
+        id: 'fsdfsdfs',
+        icon: 'Link',
       },
     ]);
     const cloneData = (data: any) => {
+      console.log('dddddd');
       data = {
-        ...data,
+        ...JSON.parse(JSON.stringify(data)),
         id: String(Math.random()),
       };
       if (data.type === 'Grid') {

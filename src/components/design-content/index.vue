@@ -15,24 +15,31 @@
     </header>
     <section>
       <div>
-        <nested-draggable :tasks="renderOptions"></nested-draggable>
+        <el-form :model="formModel" :rules="formRules">
+          <nested-draggable :tasks="renderOptions"></nested-draggable>
+        </el-form>
       </div>
     </section>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'design-content',
 };
 </script>
-<script setup name="form-content">
+<script setup lang="ts" name="form-content">
 import { reactive, ref } from 'vue';
-import emit from '@/utils/emit.js';
+import { formModel, formRules } from '@/model/form';
+
 const renderOptions = ref([
   {
     type: 'Button',
     id: 'sdsdfgsd',
+    options: {
+      name: '',
+      type: 'default',
+    },
   },
   {
     type: 'Input',
@@ -44,33 +51,7 @@ const renderOptions = ref([
     tasks: [[], []],
   },
 ]);
-let dragType = '';
-let dragId = '';
-emit.on('dragstart', (type, id) => {
-  dragType = type;
-  dragId = id;
-});
-const addComponent = () => {
-  const index = renderOptions.findIndex((option) => option.id === dragId);
-  if (index === -1) {
-    renderOptions.push({
-      type: dragType,
-      id: dragId,
-    });
-  }
-};
-const drop = () => {
-  console.log('drop');
-  // addComponent();
-};
-const dragenter = () => {
-  console.log('来了');
-  //addComponent();
-};
-const onChange = (res) => {
-  console.log('onChange', res);
-  console.log(renderOptions);
-};
+
 const getData = () => {
   console.log(renderOptions);
 };
@@ -86,6 +67,8 @@ const getData = () => {
   background: #fff;
   display: flex;
   flex-direction: column;
+  border-left: 2px dotted #ebeef5;
+  border-right: 2px dotted #ebeef5;
   header {
     box-sizing: border-box;
     padding: 5px 10px;
@@ -99,6 +82,9 @@ const getData = () => {
     background: #f1f2f3;
     > div {
       background: #fff;
+      height: 100%;
+    }
+    .el-form {
       height: 100%;
       > .nested-content {
         height: 100%;

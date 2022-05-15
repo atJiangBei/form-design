@@ -2,10 +2,11 @@
   <div class="container-warper">
     <design-side />
     <design-content />
+    <design-setting />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'App',
 };
@@ -19,5 +20,6 @@ export default {
 .container-warper {
   display: flex;
   height: 100vh;
+  min-width: 1200px;
 }
 </style>

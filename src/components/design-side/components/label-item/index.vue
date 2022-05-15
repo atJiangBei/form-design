@@ -21,7 +21,11 @@ import {
   TurnOff,
   Pointer,
   Timer,
+  Clock,
   Operation,
+  Picture,
+  Link,
+  CollectionTag,
 } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -37,7 +41,11 @@ export default defineComponent({
     TurnOff,
     Pointer,
     Timer,
+    Clock,
     Operation,
+    Picture,
+    Link,
+    CollectionTag,
   },
   props: {
     label: {
