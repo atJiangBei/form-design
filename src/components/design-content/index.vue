@@ -33,22 +33,34 @@ import { reactive, ref } from 'vue';
 import { formModel, formRules } from '@/model/form';
 
 const renderOptions = ref([
-  {
-    type: 'Button',
-    id: 'sdsdfgsd',
-    options: {
-      name: '',
-      type: 'default',
-    },
-  },
-  {
-    type: 'Input',
-    id: 'fsdfsdfsd',
-  },
+  // {
+  //   type: 'Button',
+  //   id: 'sdsdfgsd',
+  //   options: {
+  //     name: '',
+  //     type: 'default',
+  //   },
+  // },
+  // {
+  //   type: 'Input',
+  //   id: 'fsdfsdfsd',
+  // },
   {
     type: 'Grid',
     id: 'dsfsdfsdfsd',
     tasks: [[], []],
+    clos: [
+      {
+        type: 'col',
+        span: 12,
+        list: [],
+      },
+      {
+        type: 'col',
+        span: 12,
+        list: [],
+      },
+    ],
   },
 ]);
 

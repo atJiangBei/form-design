@@ -54,6 +54,18 @@ export default defineComponent({
         id: 'asfdsfsd',
         icon: 'Grid',
         tasks: [[], []],
+        clos: [
+          {
+            type: 'col',
+            span: 12,
+            list: [],
+          },
+          {
+            type: 'col',
+            span: 12,
+            list: [],
+          },
+        ],
       },
     ]);
 
@@ -76,6 +88,12 @@ export default defineComponent({
         type: 'Input',
         id: 'dasdas',
         icon: 'Edit',
+        label: '文本框',
+        options: {
+          name: 'Input',
+          type: 'text',
+          size: 'default',
+        },
       },
       {
         type: 'InputNumber',
@@ -135,10 +153,14 @@ export default defineComponent({
     ]);
     const cloneData = (data: any) => {
       console.log('dddddd');
+      const id = String(Math.random());
       data = {
         ...JSON.parse(JSON.stringify(data)),
-        id: String(Math.random()),
+        id: id,
       };
+      if (data.options) {
+        data.options.name += id;
+      }
       if (data.type === 'Grid') {
         data.tasks = [[], []];
       }

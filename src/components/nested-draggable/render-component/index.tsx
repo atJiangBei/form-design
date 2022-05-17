@@ -1,13 +1,21 @@
 import { defineComponent, PropType } from 'vue';
 import { formModel, selectedItem } from '@/model/form';
+import './index.less';
 
 type ConfigType = {
   type: string;
   id: string;
   options: {
     type: string;
+    name: string;
+    size: string;
   };
   tasks: [][];
+  clos: {
+    type: string;
+    span: number;
+    list: ConfigType[];
+  }[];
 };
 export default defineComponent({
   name: 'render-component',
@@ -28,9 +36,9 @@ export default defineComponent({
       switch (type) {
         case 'Button':
           return (
-            <el-button type={options.type} onClick={onActived}>
-              按钮
-            </el-button>
+            <div onClick={onActived}>
+              <el-button type={options.type}>按钮</el-button>
+            </div>
           );
         case 'Tag':
           return (
@@ -39,7 +47,17 @@ export default defineComponent({
             </el-tag>
           );
         case 'Input':
-          return <el-input></el-input>;
+          return (
+            <div onClick={onActived} class="component-box">
+              <el-form-item label="Input">
+                <el-input
+                  type={options.type}
+                  size={options.size}
+                  v-model={formModel[options.name]}
+                ></el-input>
+              </el-form-item>
+            </div>
+          );
         case 'Textarea':
           return <el-input type="textarea"></el-input>;
         case 'InputNumber':
@@ -137,16 +155,29 @@ export default defineComponent({
           return (
             <>
               <el-row>
-                {props.config.tasks.map((list: any) => {
+                {props.config.clos.map((colItem) => {
                   return (
-                    <el-col span={12}>
-                      <nested-draggable tasks={list} />
+                    <el-col span={colItem.span}>
+                      <nested-draggable tasks={colItem.list} />
                     </el-col>
                   );
                 })}
               </el-row>
             </>
           );
+        // return (
+        //   <>
+        //     <el-row>
+        //       {props.config.tasks.map((list: any) => {
+        //         return (
+        //           <el-col span={12}>
+        //             <nested-draggable tasks={list} />
+        //           </el-col>
+        //         );
+        //       })}
+        //     </el-row>
+        //   </>
+        // );
         default:
           break;
       }
