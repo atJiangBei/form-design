@@ -7,10 +7,10 @@
         <el-button type="warning">Reset</el-button>
       </div>
       <el-button-group class="ml-4">
-        <el-button type="primary">Delete</el-button>
-        <el-button type="primary">Preview</el-button>
-        <el-button type="primary">Import</el-button>
-        <el-button type="primary">Export</el-button>
+        <el-button type="primary">清空所有</el-button>
+        <el-button type="primary">预览</el-button>
+        <el-button type="primary">获取表单数据</el-button>
+        <el-button type="primary">导出</el-button>
       </el-button-group>
     </header>
     <section>
@@ -45,23 +45,23 @@ const renderOptions = ref([
   //   type: 'Input',
   //   id: 'fsdfsdfsd',
   // },
-  {
-    type: 'Grid',
-    id: 'dsfsdfsdfsd',
-    tasks: [[], []],
-    clos: [
-      {
-        type: 'col',
-        span: 12,
-        list: [],
-      },
-      {
-        type: 'col',
-        span: 12,
-        list: [],
-      },
-    ],
-  },
+  // {
+  //   type: 'Grid',
+  //   id: 'dsfsdfsdfsd',
+  //   tasks: [[], []],
+  //   clos: [
+  //     {
+  //       type: 'col',
+  //       span: 12,
+  //       list: [],
+  //     },
+  //     {
+  //       type: 'col',
+  //       span: 12,
+  //       list: [],
+  //     },
+  //   ],
+  // },
 ]);
 
 const getData = () => {

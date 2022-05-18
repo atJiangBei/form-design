@@ -15,7 +15,7 @@ export default defineComponent({
       return (
         <el-collapse v-model={activeNames.value}>
           <el-collapse-item title="基本属性" name="basic">
-            <div>{renderItem(type, options)}</div>
+            <el-form label-width="90px">{renderItem(type, options)}</el-form>
           </el-collapse-item>
           <el-collapse-item title="高级属性" name="complex">
             <el-empty image-size={100} />
@@ -28,7 +28,6 @@ export default defineComponent({
 
 function renderItem(type: string, options: any) {
   type = type.toUpperCase();
-
   switch (type) {
     case 'INPUT':
       return <RenderInput modelOptions={options} />;

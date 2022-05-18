@@ -9,6 +9,8 @@ type ConfigType = {
     type: string;
     name: string;
     size: string;
+    label: string;
+    disabled: boolean;
   };
   tasks: [][];
   clos: {
@@ -48,11 +50,19 @@ export default defineComponent({
           );
         case 'Input':
           return (
-            <div onClick={onActived} class="component-box">
-              <el-form-item label="Input">
+            <div
+              onClick={onActived}
+              class={{
+                'component-box': true,
+                selected: selectedItem.value.id === props.config.id,
+              }}
+            >
+              {JSON.stringify(options)}
+              <el-form-item label={options.label}>
                 <el-input
                   type={options.type}
                   size={options.size}
+                  disabled={options.disabled}
                   v-model={formModel[options.name]}
                 ></el-input>
               </el-form-item>
