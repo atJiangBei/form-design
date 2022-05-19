@@ -1,6 +1,7 @@
 import { defineComponent, PropType } from 'vue';
 import { formModel, selectedItem } from '@/model/form';
 import './index.less';
+import ContainerTool from './../container-tool/index.vue';
 
 type ConfigType = {
   type: string;
@@ -19,6 +20,7 @@ type ConfigType = {
     list: ConfigType[];
   }[];
 };
+
 export default defineComponent({
   name: 'render-component',
   props: {
@@ -29,18 +31,22 @@ export default defineComponent({
   },
   setup(props) {
     const onActived = () => {
-      console.log('sssss', props.config);
       selectedItem.value = props.config;
     };
+    const onDelete = () => {};
     const render = (config: ConfigType) => {
       const { type, options } = config;
 
       switch (type) {
         case 'Button':
           return (
-            <div onClick={onActived}>
+            <ContainerTool
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={onActived}
+              onDelete={onDelete}
+            >
               <el-button type={options.type}>按钮</el-button>
-            </div>
+            </ContainerTool>
           );
         case 'Tag':
           return (
@@ -50,15 +56,12 @@ export default defineComponent({
           );
         case 'Input':
           return (
-            <div
-              onClick={onActived}
-              class={{
-                'component-box': true,
-                selected: selectedItem.value.id === props.config.id,
-              }}
+            <ContainerTool
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={onActived}
+              onDelete={onDelete}
             >
-              {JSON.stringify(options)}
-              <el-form-item label={options.label}>
+              <el-form-item label={options.label} prop={options.name}>
                 <el-input
                   type={options.type}
                   size={options.size}
@@ -66,7 +69,7 @@ export default defineComponent({
                   v-model={formModel[options.name]}
                 ></el-input>
               </el-form-item>
-            </div>
+            </ContainerTool>
           );
         case 'Textarea':
           return <el-input type="textarea"></el-input>;

@@ -1,6 +1,6 @@
-import { defineComponent, PropType, ref, watch } from 'vue';
+import { defineComponent, nextTick, PropType, ref, watch } from 'vue';
 import { InputOptions } from '@/components/design-side/types/options';
-import { formModel } from '@/model/form';
+import { formModel, formRules, templateFormRef } from '@/model/form';
 import { ElMessage } from 'element-plus';
 
 export default defineComponent({
@@ -17,6 +17,11 @@ export default defineComponent({
       () => props.modelOptions,
       () => {
         onlyName.value = props.modelOptions.name;
+        //假如无此步骤，input值又未改变，formModel此处为空对象{}
+        formModel[onlyName.value] = formModel[onlyName.value];
+      },
+      {
+        immediate: true,
       }
     );
     const onChange = () => {
@@ -26,12 +31,32 @@ export default defineComponent({
         return;
       }
       if (onlyName.value !== props.modelOptions.name) {
-        formModel[onlyName.value] = formModel[props.modelOptions.name];
-        delete formModel[props.modelOptions.name];
-        props.modelOptions.name = onlyName.value;
+        const currentNames = Object.getOwnPropertyNames(formModel);
+        if (currentNames.includes(onlyName.value)) {
+          onlyName.value = props.modelOptions.name;
+          ElMessage.warning('唯一名称不能重复');
+        } else {
+          formModel[onlyName.value] = formModel[props.modelOptions.name];
+          delete formModel[props.modelOptions.name];
+          props.modelOptions.name = onlyName.value;
+        }
       }
     };
-
+    const setRequired = (val: boolean) => {
+      console.log(val);
+      if (val) {
+        formRules[props.modelOptions.name] = {
+          required: true,
+          trigger: 'change',
+        };
+      } else {
+        delete formRules[props.modelOptions.name];
+      }
+      nextTick(() => {
+        console.log(templateFormRef.value);
+        templateFormRef.value.resetFields();
+      });
+    };
     return () => {
       const { modelOptions } = props;
       return (
@@ -57,6 +82,9 @@ export default defineComponent({
           </el-form-item> */}
           <el-form-item label="禁用">
             <el-switch v-model={modelOptions.disabled} />
+          </el-form-item>
+          <el-form-item label="是否必填">
+            <el-switch v-model={modelOptions.required} onChange={setRequired} />
           </el-form-item>
         </>
       );

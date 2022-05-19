@@ -17,9 +17,9 @@ export default defineComponent({
           <el-collapse-item title="基本属性" name="basic">
             <el-form label-width="90px">{renderItem(type, options)}</el-form>
           </el-collapse-item>
-          <el-collapse-item title="高级属性" name="complex">
+          {/* <el-collapse-item title="高级属性" name="complex">
             <el-empty image-size={100} />
-          </el-collapse-item>
+          </el-collapse-item> */}
         </el-collapse>
       );
     };

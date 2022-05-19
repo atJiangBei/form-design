@@ -1,7 +1,11 @@
 <template>
   <aside class="design-setting">
     <div class="design-setting-content">
-      <render-setting></render-setting>
+      <el-tabs v-model="activeName">
+        <el-tab-pane label="组件属性" name="fieldAttribute">
+          <render-setting></render-setting>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </aside>
 </template>
@@ -16,9 +20,9 @@ export default defineComponent({
     renderSetting,
   },
   setup() {
-    const activeNames = ref(['basic', 'complex']);
+    const activeName = ref('fieldAttribute');
     return {
-      activeNames,
+      activeName,
     };
   },
 });
