@@ -2,11 +2,12 @@
   <div
     class="container-tool"
     :class="{ selected: selected }"
-    @click="onSelected"
+    @click.stop="onSelected"
   >
+    <div class="container-tool-block" v-if="selected">{{ contentType }}</div>
     <slot></slot>
     <div class="operation-toolbar" v-if="selected">
-      <el-icon @click="onDelete">
+      <el-icon @click.stop="onDelete">
         <Delete />
       </el-icon>
     </div>
@@ -25,6 +26,10 @@ export default defineComponent({
   props: {
     selected: {
       type: Boolean,
+    },
+    contentType: {
+      type: String,
+      default: 'sdas',
     },
   },
   setup(props, { emit }) {
@@ -45,11 +50,20 @@ export default defineComponent({
 .container-tool {
   position: relative;
   cursor: move;
-  padding: 10px 5px;
+  padding: 5px;
   border: 2px solid transparent;
   border-radius: 3px;
   &.selected {
     border-color: var(--el-color-primary);
+  }
+  .container-tool-block {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--el-color-primary);
+    padding: 5px 10px;
+    color: #fff;
+    z-index: 1;
   }
   .operation-toolbar {
     position: absolute;
@@ -61,6 +75,7 @@ export default defineComponent({
     padding: 5px 10px;
     color: #fff;
     cursor: pointer;
+    z-index: 1;
   }
 }
 </style>

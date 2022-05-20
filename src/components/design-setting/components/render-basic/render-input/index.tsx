@@ -1,12 +1,12 @@
 import { defineComponent, nextTick, PropType, ref, watch } from 'vue';
-import { InputOptions } from '@/components/design-side/types/options';
+import { InputConfigOptionsType } from '@/components/design-side/types/options';
 import { formModel, formRules, templateFormRef } from '@/model/form';
 import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   props: {
     modelOptions: {
-      type: Object as PropType<InputOptions>,
+      type: Object as PropType<InputConfigOptionsType>,
       default: () => ({}),
     },
   },

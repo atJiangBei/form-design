@@ -1,16 +1,37 @@
+export type GridConfigOptionsType = {};
+export type ColConfigOptionsType = {
+  span: number;
+};
+export type ColConfigType = {
+  type: 'col';
+  id: string;
+  options: ColConfigOptionsType;
+  list: [ColConfigType, ButtonConfigType, InputConfigType] | [];
+};
+export type GridConfigType = {
+  type: 'Grid';
+  id: 'asfdsfsd';
+  icon: 'Grid';
+  options: GridConfigOptionsType;
+  cols: ColConfigType[];
+};
+
+export type ContainerComponentsType = [GridConfigType];
+
+export type ButtonConfigOptionsType = {
+  name: string;
+  label: string;
+  type: string;
+  size: string;
+  disabled: boolean;
+};
 export type ButtonConfigType = {
   type: 'Button';
   id: string;
   icon: string;
-  options: {
-    name: string;
-    label: string;
-    type: string;
-    size: string;
-    disabled: boolean;
-  };
+  options: ButtonConfigOptionsType;
 };
-export type InputOptions = {
+export type InputConfigOptionsType = {
   name: string;
   label: string;
   type: string;
@@ -23,7 +44,7 @@ export type InputConfigType = {
   type: 'Input';
   id: string;
   icon: string;
-  options: InputOptions;
+  options: InputConfigOptionsType;
 };
 
 export type BasicComponentsType = [ButtonConfigType, InputConfigType];

@@ -1,21 +1,27 @@
 import { reactive, ref } from 'vue';
-import { InputOptions, BasicComponentsType } from './types/options';
+import { BasicComponentsType, ContainerComponentsType } from './types/options';
 
-export const containerComponents = reactive([
+export const containerComponents = ref<ContainerComponentsType>([
   {
     type: 'Grid',
     id: 'asfdsfsd',
     icon: 'Grid',
-    tasks: [[], []],
-    clos: [
+    options: {},
+    cols: [
       {
         type: 'col',
-        span: 12,
+        id: 'jghfgs',
+        options: {
+          span: 12,
+        },
         list: [],
       },
       {
         type: 'col',
-        span: 12,
+        id: 'trhvsgf',
+        options: {
+          span: 12,
+        },
         list: [],
       },
     ],

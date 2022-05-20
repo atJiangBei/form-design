@@ -59,11 +59,16 @@ export default defineComponent({
         ...JSON.parse(JSON.stringify(data)),
         id: id,
       };
-      if (data.options) {
-        data.options.name += id;
+      if (data.type !== 'Grid') {
+        if (data.options) {
+          data.options.name += id;
+        }
       }
+
       if (data.type === 'Grid') {
-        data.tasks = [[], []];
+        data.cols.forEach((col: any) => {
+          col.id = createId();
+        });
       }
       return data;
     };

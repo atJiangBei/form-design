@@ -1,6 +1,7 @@
 import { defineComponent, ref } from 'vue';
 import { formModel, selectedItem } from '@/model/form';
 import RenderInput from '../render-basic/render-input';
+import RenderCol from '../render-basic/renter-col';
 
 export default defineComponent({
   name: 'render-setting',
@@ -31,5 +32,7 @@ function renderItem(type: string, options: any) {
   switch (type) {
     case 'INPUT':
       return <RenderInput modelOptions={options} />;
+    case 'COL':
+      return <RenderCol modelOptions={options} />;
   }
 }
