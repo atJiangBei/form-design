@@ -49,6 +49,7 @@ export default defineComponent({
         //   );
         case 'Input':
           const { options } = config as InputConfigType;
+          formModel[options.name] = formModel[options.name] || '';
           return (
             <ContainerTool
               contentType={type}

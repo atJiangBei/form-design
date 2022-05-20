@@ -10,14 +10,15 @@
         <el-button type="primary" @click="emptyAll">清空所有</el-button>
         <el-button type="primary" @click="onPreview">预览</el-button>
         <el-button type="primary" @click="getData">获取表单数据</el-button>
-        <el-button type="primary" @click="getTemplateData"
-          >获取模板数据</el-button
-        >
+        <el-button type="primary" @click="getTemplateData">
+          获取模板数据
+        </el-button>
         <el-button type="primary">导出</el-button>
       </el-button-group>
     </header>
     <section>
       <div>
+        <div>{{ blockData }}</div>
         <div>{{ JSON.stringify(formModel) }}</div>
         {{ JSON.stringify(formRules) }}
         <el-form :model="formModel" :rules="formRules" ref="formRef">
@@ -66,6 +67,7 @@ const dataDisplayVisible = ref(false);
 
 const blockData = ref(JSON.stringify({ name: '' }));
 const getData = () => {
+  console.log(Object.getOwnPropertyNames(formModel));
   dataDisplayVisible.value = true;
   blockData.value = JSON.stringify(formModel, null, '  ');
 };

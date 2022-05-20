@@ -18,7 +18,8 @@ export default defineComponent({
       () => {
         onlyName.value = props.modelOptions.name;
         //假如无此步骤，input值又未改变，formModel此处为空对象{}
-        formModel[onlyName.value] = formModel[onlyName.value];
+        //formModel[onlyName.value] = formModel[onlyName.value] || '';
+        // console.log(22, formModel, onlyName.value);
       },
       {
         immediate: true,
