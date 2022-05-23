@@ -18,11 +18,10 @@
     </header>
     <section>
       <div>
-        <div>{{ blockData }}</div>
         <div>{{ JSON.stringify(formModel) }}</div>
         {{ JSON.stringify(formRules) }}
         <el-form :model="formModel" :rules="formRules" ref="formRef">
-          <nested-draggable :tasks="renderOptions"></nested-draggable>
+          <nested-draggable :tasks="renderComponentConfig"></nested-draggable>
         </el-form>
       </div>
     </section>
@@ -52,7 +51,7 @@ export default {
 import { onMounted, reactive, ref, unref, isRef } from 'vue';
 import {
   templateFormRef,
-  renderOptions,
+  renderComponentConfig,
   formModel,
   formRules,
   emptyAll,
@@ -65,15 +64,14 @@ onMounted(() => {
 
 const dataDisplayVisible = ref(false);
 
-const blockData = ref(JSON.stringify({ name: '' }));
+const blockData = ref(JSON.stringify({}));
 const getData = () => {
-  console.log(Object.getOwnPropertyNames(formModel));
   dataDisplayVisible.value = true;
   blockData.value = JSON.stringify(formModel, null, '  ');
 };
 const getTemplateData = () => {
   dataDisplayVisible.value = true;
-  blockData.value = JSON.stringify(unref(renderOptions), null, '  ');
+  blockData.value = JSON.stringify(unref(renderComponentConfig), null, '  ');
 };
 
 const onReset = () => {

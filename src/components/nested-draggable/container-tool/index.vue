@@ -7,6 +7,9 @@
     <div class="container-tool-block" v-if="selected">{{ contentType }}</div>
     <slot></slot>
     <div class="operation-toolbar" v-if="selected">
+      <el-icon v-if="['Grid', 'Col'].includes(contentType)" @click="onCopy">
+        <DocumentCopy />
+      </el-icon>
       <el-icon @click.stop="onDelete">
         <Delete />
       </el-icon>
@@ -16,13 +19,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Delete } from '@element-plus/icons-vue';
+import { Delete, DocumentCopy } from '@element-plus/icons-vue';
 export default defineComponent({
   name: 'ContainerTool',
   components: {
     Delete,
+    DocumentCopy,
   },
-  emits: ['selected', 'delete'],
+  emits: ['selected', 'delete', 'copy'],
   props: {
     selected: {
       type: Boolean,
@@ -39,9 +43,13 @@ export default defineComponent({
     const onDelete = () => {
       emit('delete');
     };
+    const onCopy = () => {
+      emit('copy');
+    };
     return {
       onSelected,
       onDelete,
+      onCopy,
     };
   },
 });
@@ -61,9 +69,10 @@ export default defineComponent({
     left: 0;
     top: 0;
     background-color: var(--el-color-primary);
-    padding: 5px 10px;
     color: #fff;
     z-index: 1;
+    font-size: 12px;
+    padding: 0 2px;
   }
   .operation-toolbar {
     position: absolute;
@@ -76,6 +85,9 @@ export default defineComponent({
     color: #fff;
     cursor: pointer;
     z-index: 1;
+    .el-icon + .el-icon {
+      margin-left: 10px;
+    }
   }
 }
 </style>

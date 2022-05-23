@@ -44,8 +44,7 @@ import LabelItem from './components/label-item/index.vue';
 import { reactive, ref, defineComponent } from 'vue';
 import { basicComponents, containerComponents } from './config';
 
-let num = 0;
-const createId = () => ++num + String(Math.floor(Math.random() * 1000));
+import { createId } from '@/model/form';
 
 export default defineComponent({
   name: 'design-side',

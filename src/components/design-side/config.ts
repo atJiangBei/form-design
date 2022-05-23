@@ -9,7 +9,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     options: {},
     cols: [
       {
-        type: 'col',
+        type: 'Col',
         id: 'jghfgs',
         options: {
           span: 12,
@@ -17,7 +17,7 @@ export const containerComponents = ref<ContainerComponentsType>([
         list: [],
       },
       {
-        type: 'col',
+        type: 'Col',
         id: 'trhvsgf',
         options: {
           span: 12,

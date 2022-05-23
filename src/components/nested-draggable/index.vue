@@ -41,10 +41,10 @@ export default defineComponent({
   width: 100%;
   min-height: 50px;
   list-style: none;
-  border: 1px dashed #000;
+  border: 1px dashed #00497d;
 }
 .content-item {
-  padding: 10px;
+  padding: 5px;
   border: 1px dashed #0092ff;
   cursor: move;
 }

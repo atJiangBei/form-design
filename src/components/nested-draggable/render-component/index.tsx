@@ -1,5 +1,10 @@
 import { defineComponent, PropType } from 'vue';
-import { formModel, selectedItem } from '@/model/form';
+import {
+  formModel,
+  selectedItem,
+  deleteComponent,
+  copyComponent,
+} from '@/model/form';
 import './index.less';
 import ContainerTool from './../container-tool/index.vue';
 import {
@@ -21,9 +26,15 @@ export default defineComponent({
   },
   setup(props) {
     const onActived = (config: any) => {
+      console.log(config.id);
       selectedItem.value = config;
     };
-    const onDelete = () => {};
+    const onDelete = (id: string) => {
+      deleteComponent(id);
+    };
+    const onCopy = (id: string) => {
+      copyComponent(id);
+    };
     const render = (config: ConfigType) => {
       const { type } = config;
 
@@ -32,9 +43,9 @@ export default defineComponent({
           return (
             <ContainerTool
               contentType={type}
-              selected={selectedItem.value.id === props.config.id}
+              selected={selectedItem.value.id === config.id}
               onSelected={() => onActived(config)}
-              onDelete={onDelete}
+              onDelete={() => onDelete(config.id)}
             >
               <el-button type={(config as ButtonConfigType).options.type}>
                 按钮
@@ -55,7 +66,7 @@ export default defineComponent({
               contentType={type}
               selected={selectedItem.value.id === props.config.id}
               onSelected={() => onActived(config)}
-              onDelete={onDelete}
+              onDelete={() => onDelete(config.id)}
             >
               <el-form-item label={options.label} prop={options.name}>
                 <el-input
@@ -167,7 +178,8 @@ export default defineComponent({
                 contentType={config.type}
                 selected={selectedItem.value.id === config.id}
                 onSelected={() => onActived(config)}
-                onDelete={onDelete}
+                onDelete={() => onDelete(config.id)}
+                onCopy={() => onCopy(config.id)}
               >
                 <el-row>
                   {(config as GridConfigType).cols.map((colItem) => {
@@ -177,7 +189,8 @@ export default defineComponent({
                           contentType={colItem.type}
                           selected={selectedItem.value.id === colItem.id}
                           onSelected={() => onActived(colItem)}
-                          onDelete={onDelete}
+                          onDelete={() => onDelete(colItem.id)}
+                          onCopy={() => onCopy(colItem.id)}
                         >
                           <nested-draggable tasks={colItem.list} />
                         </ContainerTool>

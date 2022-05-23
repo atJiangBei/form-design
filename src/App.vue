@@ -1,16 +1,12 @@
 <template>
-  <div class="container-warper">
+  <div class="container-warper" ref="testRef">
     <design-side />
     <design-content />
     <design-setting />
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'App',
-};
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less">
 * {

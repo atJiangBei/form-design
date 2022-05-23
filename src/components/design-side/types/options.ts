@@ -3,14 +3,14 @@ export type ColConfigOptionsType = {
   span: number;
 };
 export type ColConfigType = {
-  type: 'col';
+  type: 'Col';
   id: string;
   options: ColConfigOptionsType;
-  list: [ColConfigType, ButtonConfigType, InputConfigType] | [];
+  list: [GridConfigType, ButtonConfigType, InputConfigType] | [];
 };
 export type GridConfigType = {
   type: 'Grid';
-  id: 'asfdsfsd';
+  id: string;
   icon: 'Grid';
   options: GridConfigOptionsType;
   cols: ColConfigType[];
@@ -48,3 +48,9 @@ export type InputConfigType = {
 };
 
 export type BasicComponentsType = [ButtonConfigType, InputConfigType];
+
+export type AllComponentType =
+  | GridConfigType
+  | ColConfigType
+  | ButtonConfigType
+  | InputConfigType;
