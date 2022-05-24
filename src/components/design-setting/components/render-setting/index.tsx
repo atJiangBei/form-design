@@ -2,6 +2,7 @@ import { defineComponent, ref } from 'vue';
 import { formModel, selectedItem } from '@/model/form';
 import RenderInput from '../render-basic/render-input';
 import RenderCol from '../render-basic/renter-col';
+import RenderDivider from '../render-basic/render-divider';
 
 export default defineComponent({
   name: 'render-setting',
@@ -34,5 +35,7 @@ function renderItem(type: string, options: any) {
       return <RenderInput modelOptions={options} />;
     case 'COL':
       return <RenderCol modelOptions={options} />;
+    case 'DIVIDER':
+      return <RenderDivider modelOptions={options} />;
   }
 }

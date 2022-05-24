@@ -61,6 +61,8 @@ export default defineComponent({
   padding: 5px;
   border: 2px solid transparent;
   border-radius: 3px;
+  box-sizing: border-box;
+  height: 100%;
   &.selected {
     border-color: var(--el-color-primary);
   }

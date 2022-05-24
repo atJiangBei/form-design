@@ -55,7 +55,7 @@ export default defineComponent({
       }
       nextTick(() => {
         console.log(templateFormRef.value);
-        templateFormRef.value.resetFields();
+        templateFormRef.value.clearValidate();
       });
     };
     return () => {

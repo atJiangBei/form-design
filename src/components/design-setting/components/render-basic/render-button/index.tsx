@@ -13,11 +13,7 @@ export default defineComponent({
       return (
         <>
           <el-form-item label="按钮类型">
-            <el-select
-              v-model={modelOptions.type}
-              placeholder="Select"
-              size="small"
-            >
+            <el-select v-model={modelOptions.type} placeholder="Select">
               <el-option label="default" value="default" />
               <el-option label="primary" value="primary" />
               <el-option label="success" value="success" />

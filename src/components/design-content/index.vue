@@ -39,6 +39,11 @@
       </div>
     </template> -->
     </el-dialog>
+    <el-dialog v-model="previewDialogVisible" title="Preview" width="800px">
+      <div style="height: 500px; overflow-y: auto" v-if="previewDialogVisible">
+        <render-form></render-form>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -77,7 +82,10 @@ const getTemplateData = () => {
 const onReset = () => {
   formRef.value.resetFields();
 };
-const onPreview = () => {};
+const previewDialogVisible = ref(false);
+const onPreview = () => {
+  previewDialogVisible.value = true;
+};
 </script>
 
 <style lang="less">

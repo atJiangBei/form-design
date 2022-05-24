@@ -30,6 +30,17 @@ export const containerComponents = ref<ContainerComponentsType>([
 
 export const basicComponents = ref<BasicComponentsType>([
   {
+    type: 'Divider',
+    id: 'fdsfdsgfj',
+    icon: 'Tools',
+    options: {
+      title: 'Title',
+      direction: 'horizontal',
+      borderStyle: 'solid',
+      contentPosition: 'center',
+    },
+  },
+  {
     type: 'Button',
     id: 'asdasdas',
     icon: 'Tools',

@@ -47,10 +47,29 @@ export type InputConfigType = {
   options: InputConfigOptionsType;
 };
 
-export type BasicComponentsType = [ButtonConfigType, InputConfigType];
+export type DividerConfigOptionsType = {
+  title: string;
+  direction: 'horizontal';
+  borderStyle: 'solid' | 'dashed';
+  contentPosition: 'left' | 'right' | 'center';
+};
+
+export type DividerConfigType = {
+  type: 'Divider';
+  id: string;
+  icon: string;
+  options: DividerConfigOptionsType;
+};
+
+export type BasicComponentsType = [
+  DividerConfigType,
+  ButtonConfigType,
+  InputConfigType
+];
 
 export type AllComponentType =
   | GridConfigType
   | ColConfigType
   | ButtonConfigType
-  | InputConfigType;
+  | InputConfigType
+  | DividerConfigType;

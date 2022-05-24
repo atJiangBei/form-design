@@ -11,10 +11,15 @@ import {
   GridConfigType,
   ButtonConfigType,
   InputConfigType,
+  DividerConfigType,
   ColConfigOptionsType,
 } from '@/components/design-side/types/options';
 
-type ConfigType = GridConfigType | ButtonConfigType | InputConfigType;
+type ConfigType =
+  | GridConfigType
+  | ButtonConfigType
+  | InputConfigType
+  | DividerConfigType;
 
 export default defineComponent({
   name: 'render-component',
@@ -39,6 +44,23 @@ export default defineComponent({
       const { type } = config;
 
       switch (type) {
+        case 'Divider':
+          const dividerOptions = (config as DividerConfigType).options;
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-divider
+                borderStyle={dividerOptions.borderStyle}
+                contentPosition={dividerOptions.contentPosition}
+              >
+                {dividerOptions.title}
+              </el-divider>
+            </ContainerTool>
+          );
         case 'Button':
           return (
             <ContainerTool
@@ -59,8 +81,8 @@ export default defineComponent({
         //     </el-tag>
         //   );
         case 'Input':
-          const { options } = config as InputConfigType;
-          formModel[options.name] = formModel[options.name] || '';
+          const inputOptions = (config as InputConfigType).options;
+          formModel[inputOptions.name] = formModel[inputOptions.name] || '';
           return (
             <ContainerTool
               contentType={type}
@@ -68,12 +90,12 @@ export default defineComponent({
               onSelected={() => onActived(config)}
               onDelete={() => onDelete(config.id)}
             >
-              <el-form-item label={options.label} prop={options.name}>
+              <el-form-item label={inputOptions.label} prop={inputOptions.name}>
                 <el-input
-                  type={options.type}
-                  size={options.size}
-                  disabled={options.disabled}
-                  v-model={formModel[options.name]}
+                  type={inputOptions.type}
+                  size={inputOptions.size}
+                  disabled={inputOptions.disabled}
+                  v-model={formModel[inputOptions.name]}
                 ></el-input>
               </el-form-item>
             </ContainerTool>
