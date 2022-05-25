@@ -1,18 +1,32 @@
 import { defineComponent } from 'vue';
+import RenderFormItem from './render-form-item/index';
 
 export default defineComponent({
   name: 'render-form',
   props: {
-    renderOptions: {
-      type: Object,
+    usedRenderData: {
+      type: Array,
+      default: () => [],
     },
     formModel: {
       type: Object,
     },
+    formRules: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   setup(props) {
     return () => {
-      return <div>form-template</div>;
+      const { usedRenderData, formModel, formRules } = props;
+      return (
+        <el-form label-width="100px" rules={formRules} model={formModel}>
+          <RenderFormItem
+            usedRenderData={usedRenderData}
+            formModel={formModel}
+          ></RenderFormItem>
+        </el-form>
+      );
     };
   },
 });

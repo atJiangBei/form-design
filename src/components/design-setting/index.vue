@@ -3,7 +3,10 @@
     <div class="design-setting-content">
       <el-tabs v-model="activeName">
         <el-tab-pane label="组件属性" name="fieldAttribute">
-          <render-setting></render-setting>
+          <render-item-setting></render-item-setting>
+        </el-tab-pane>
+        <el-tab-pane label="表单属性" name="formAttribute">
+          <render-form-setting></render-form-setting>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -12,12 +15,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import renderSetting from './components/render-setting/index';
+import renderItemSetting from './components/render-item-setting/index';
+import renderFormSetting from './components/render-form-setting/index';
 
 export default defineComponent({
   name: 'design-setting',
   components: {
-    renderSetting,
+    renderItemSetting,
+    renderFormSetting,
   },
   setup() {
     const activeName = ref('fieldAttribute');

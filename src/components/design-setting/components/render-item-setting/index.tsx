@@ -5,7 +5,7 @@ import RenderCol from '../render-basic/renter-col';
 import RenderDivider from '../render-basic/render-divider';
 
 export default defineComponent({
-  name: 'render-setting',
+  name: 'render-item-setting',
   setup() {
     const activeNames = ref(['basic', 'complex']);
 

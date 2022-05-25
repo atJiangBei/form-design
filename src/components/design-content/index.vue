@@ -41,7 +41,11 @@
     </el-dialog>
     <el-dialog v-model="previewDialogVisible" title="Preview" width="800px">
       <div style="height: 500px; overflow-y: auto" v-if="previewDialogVisible">
-        <render-form></render-form>
+        <render-form
+          :usedRenderData="renderComponentConfig"
+          :formRules="formRules"
+          :formModel="formModel"
+        ></render-form>
       </div>
     </el-dialog>
   </div>
