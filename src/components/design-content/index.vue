@@ -20,7 +20,12 @@
       <div>
         <div>{{ JSON.stringify(formModel) }}</div>
         {{ JSON.stringify(formRules) }}
-        <el-form :model="formModel" :rules="formRules" ref="formRef">
+        <el-form
+          :model="formModel"
+          :rules="formRules"
+          v-bind="formConfig"
+          ref="formRef"
+        >
           <nested-draggable :tasks="renderComponentConfig"></nested-draggable>
         </el-form>
       </div>
@@ -40,11 +45,21 @@
     </template> -->
     </el-dialog>
     <el-dialog v-model="previewDialogVisible" title="Preview" width="800px">
-      <div style="height: 500px; overflow-y: auto" v-if="previewDialogVisible">
+      <div
+        style="
+          height: 500px;
+          overflow-y: auto;
+          padding: 10px 5px;
+          border: 2px dashed #e2e2e2;
+          border-radius: 3px;
+        "
+        v-if="previewDialogVisible"
+      >
         <render-form
           :usedRenderData="renderComponentConfig"
           :formRules="formRules"
           :formModel="formModel"
+          :formConfig="formConfig"
         ></render-form>
       </div>
     </el-dialog>
@@ -64,6 +79,7 @@ import {
   formModel,
   formRules,
   emptyAll,
+  formConfig,
 } from '@/model/form';
 
 const formRef = ref();

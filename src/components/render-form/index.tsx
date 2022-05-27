@@ -15,12 +15,16 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    formConfig: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   setup(props) {
     return () => {
-      const { usedRenderData, formModel, formRules } = props;
+      const { usedRenderData, formConfig, formModel, formRules } = props;
       return (
-        <el-form label-width="100px" rules={formRules} model={formModel}>
+        <el-form {...formConfig} rules={formRules} model={formModel}>
           <RenderFormItem
             usedRenderData={usedRenderData}
             formModel={formModel}

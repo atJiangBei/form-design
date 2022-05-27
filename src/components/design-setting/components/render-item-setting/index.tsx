@@ -3,6 +3,8 @@ import { formModel, selectedItem } from '@/model/form';
 import RenderInput from '../render-basic/render-input';
 import RenderCol from '../render-basic/renter-col';
 import RenderDivider from '../render-basic/render-divider';
+import RenderTextarea from '../render-basic/render-textarea';
+import RenderInputNumber from '../render-basic/render-input-number';
 
 export default defineComponent({
   name: 'render-item-setting',
@@ -37,5 +39,9 @@ function renderItem(type: string, options: any) {
       return <RenderCol modelOptions={options} />;
     case 'DIVIDER':
       return <RenderDivider modelOptions={options} />;
+    case 'TEXTAREA':
+      return <RenderTextarea modelOptions={options} />;
+    case 'INPUTNUMBER':
+      return <RenderInputNumber modelOptions={options} />;
   }
 }

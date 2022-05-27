@@ -14,6 +14,11 @@ export const formModel = reactive<{ [key: string]: any }>({});
 
 export const formRules = reactive<{ [key: string]: any }>({});
 
+export const formConfig = reactive({
+  labelWidth: 120,
+  labelPosition: 'right',
+});
+
 export const selectedItem = ref<any>({});
 
 export function emptyAll() {

@@ -66,17 +66,36 @@ export const basicComponents = ref<BasicComponentsType>([
       required: false,
     },
   },
-  // {
-  //   type: 'InputNumber',
-  //   id: 'dghdhfg',
-  //   icon: 'Edit',
-  // },
-  // {
-  //   type: 'Textarea',
-  //   id: 'dasdsdcsdfas',
-  //   icon: 'EditPen',
-  // },
-
+  {
+    type: 'Textarea',
+    id: 'dgdfhgj',
+    icon: 'Edit',
+    options: {
+      name: 'Textarea',
+      label: 'Textarea',
+      size: 'default',
+      disabled: false,
+      required: false,
+      resize: 'both',
+      autosize: false,
+      rows: 2,
+    },
+  },
+  {
+    type: 'InputNumber',
+    id: 'sdgdfgdf',
+    icon: 'Edit',
+    options: {
+      name: 'InputNumber',
+      label: 'InputNumber',
+      size: 'default',
+      disabled: false,
+      required: false,
+      min: 0,
+      max: 100,
+      step: 1,
+    },
+  },
   // {
   //   type: 'Select',
   //   id: 'fdgdfgdfg',

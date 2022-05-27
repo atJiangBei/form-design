@@ -47,6 +47,40 @@ export type InputConfigType = {
   options: InputConfigOptionsType;
 };
 
+export type TextareaConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+  required: boolean;
+  resize: string;
+  autosize: boolean;
+  rows: number;
+};
+export type TextareaConfigType = {
+  type: 'Textarea';
+  id: string;
+  icon: string;
+  options: TextareaConfigOptionsType;
+};
+
+export type InputNumberConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+  required: boolean;
+  min: number;
+  max: number;
+  step: number;
+};
+export type InputNumberConfigType = {
+  type: 'InputNumber';
+  id: string;
+  icon: string;
+  options: InputNumberConfigOptionsType;
+};
+
 export type DividerConfigOptionsType = {
   title: string;
   direction: 'horizontal';
@@ -64,7 +98,9 @@ export type DividerConfigType = {
 export type BasicComponentsType = [
   DividerConfigType,
   ButtonConfigType,
-  InputConfigType
+  InputConfigType,
+  TextareaConfigType,
+  InputNumberConfigType
 ];
 
 export type AllComponentType =
@@ -72,4 +108,6 @@ export type AllComponentType =
   | ColConfigType
   | ButtonConfigType
   | InputConfigType
-  | DividerConfigType;
+  | DividerConfigType
+  | TextareaConfigType
+  | InputNumberConfigType;

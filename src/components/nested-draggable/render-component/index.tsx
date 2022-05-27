@@ -13,19 +13,16 @@ import {
   InputConfigType,
   DividerConfigType,
   ColConfigOptionsType,
+  TextareaConfigType,
+  InputNumberConfigType,
+  AllComponentType,
 } from '@/components/design-side/types/options';
-
-type ConfigType =
-  | GridConfigType
-  | ButtonConfigType
-  | InputConfigType
-  | DividerConfigType;
 
 export default defineComponent({
   name: 'render-component',
   props: {
     config: {
-      type: Object as PropType<ConfigType>,
+      type: Object as PropType<AllComponentType>,
       default: () => ({}),
     },
   },
@@ -40,7 +37,7 @@ export default defineComponent({
     const onCopy = (id: string) => {
       copyComponent(id);
     };
-    const render = (config: ConfigType) => {
+    const render = (config: AllComponentType) => {
       const { type } = config;
 
       switch (type) {
@@ -92,6 +89,7 @@ export default defineComponent({
             >
               <el-form-item label={inputOptions.label} prop={inputOptions.name}>
                 <el-input
+                  clearable
                   type={inputOptions.type}
                   size={inputOptions.size}
                   disabled={inputOptions.disabled}
@@ -100,10 +98,59 @@ export default defineComponent({
               </el-form-item>
             </ContainerTool>
           );
-        // case 'Textarea':
-        //   return <el-input type="textarea"></el-input>;
-        // case 'InputNumber':
-        //   return <el-input-number></el-input-number>;
+        case 'Textarea':
+          const textareaOptions = (config as TextareaConfigType).options;
+          formModel[textareaOptions.name] =
+            formModel[textareaOptions.name] || '';
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={textareaOptions.label}
+                prop={textareaOptions.name}
+              >
+                <el-input
+                  clearable
+                  type="textarea"
+                  resize={textareaOptions.resize}
+                  autosize={textareaOptions.autosize}
+                  size={textareaOptions.size}
+                  disabled={textareaOptions.disabled}
+                  v-model={formModel[textareaOptions.name]}
+                ></el-input>
+              </el-form-item>
+            </ContainerTool>
+          );
+        case 'InputNumber':
+          const inputNumberOptions = (config as InputNumberConfigType).options;
+          formModel[inputNumberOptions.name] =
+            formModel[inputNumberOptions.name] || 0;
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={inputNumberOptions.label}
+                prop={inputNumberOptions.name}
+              >
+                <el-input-number
+                  size={inputNumberOptions.size}
+                  disabled={inputNumberOptions.disabled}
+                  min={inputNumberOptions.min}
+                  max={inputNumberOptions.max}
+                  step={inputNumberOptions.step}
+                  v-model={formModel[inputNumberOptions.name]}
+                ></el-input-number>
+              </el-form-item>
+            </ContainerTool>
+          );
         // case 'Radio':
         //   return (
         //     <el-radio-group>

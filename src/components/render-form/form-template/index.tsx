@@ -12,14 +12,10 @@ import {
   ButtonConfigType,
   InputConfigType,
   DividerConfigType,
-  ColConfigOptionsType,
+  TextareaConfigType,
+  InputNumberConfigType,
+  AllComponentType,
 } from '@/components/design-side/types/options';
-
-type ConfigType =
-  | GridConfigType
-  | ButtonConfigType
-  | InputConfigType
-  | DividerConfigType;
 
 export default defineComponent({
   name: 'FormTemplate',
@@ -33,7 +29,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const render = (config: ConfigType) => {
+    const render = (config: AllComponentType) => {
       const { type } = config;
       console.log('config', config);
       switch (type) {
@@ -64,6 +60,45 @@ export default defineComponent({
                 disabled={inputOptions.disabled}
                 v-model={formModel[inputOptions.name]}
               ></el-input>
+            </el-form-item>
+          );
+        case 'Textarea':
+          const textareaOptions = (config as TextareaConfigType).options;
+          formModel[textareaOptions.name] =
+            formModel[textareaOptions.name] || '';
+          return (
+            <el-form-item
+              label={textareaOptions.label}
+              prop={textareaOptions.name}
+            >
+              <el-input
+                clearable
+                type="textarea"
+                resize={textareaOptions.resize}
+                autosize={textareaOptions.autosize}
+                size={textareaOptions.size}
+                disabled={textareaOptions.disabled}
+                v-model={formModel[textareaOptions.name]}
+              ></el-input>
+            </el-form-item>
+          );
+        case 'InputNumber':
+          const inputNumberOptions = (config as InputNumberConfigType).options;
+          formModel[inputNumberOptions.name] =
+            formModel[inputNumberOptions.name] || 0;
+          return (
+            <el-form-item
+              label={inputNumberOptions.label}
+              prop={inputNumberOptions.name}
+            >
+              <el-input-number
+                size={inputNumberOptions.size}
+                disabled={inputNumberOptions.disabled}
+                min={inputNumberOptions.min}
+                max={inputNumberOptions.max}
+                step={inputNumberOptions.step}
+                v-model={formModel[inputNumberOptions.name]}
+              ></el-input-number>
             </el-form-item>
           );
         case 'Grid':
