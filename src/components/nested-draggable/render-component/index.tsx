@@ -15,6 +15,8 @@ import {
   ColConfigOptionsType,
   TextareaConfigType,
   InputNumberConfigType,
+  SelectConfigType,
+  SelectMultipleConfigType,
   AllComponentType,
 } from '@/components/design-side/types/options';
 
@@ -59,6 +61,7 @@ export default defineComponent({
             </ContainerTool>
           );
         case 'Button':
+          const buttonOptions = (config as ButtonConfigType).options;
           return (
             <ContainerTool
               contentType={type}
@@ -66,7 +69,11 @@ export default defineComponent({
               onSelected={() => onActived(config)}
               onDelete={() => onDelete(config.id)}
             >
-              <el-button type={(config as ButtonConfigType).options.type}>
+              <el-button
+                type={buttonOptions.type}
+                disabled={buttonOptions.disabled}
+                size={buttonOptions.size}
+              >
                 按钮
               </el-button>
             </ContainerTool>
@@ -151,6 +158,56 @@ export default defineComponent({
               </el-form-item>
             </ContainerTool>
           );
+        case 'Select':
+          const selectOptions = (config as SelectConfigType).options;
+          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={selectOptions.label}
+                prop={selectOptions.name}
+              >
+                <el-select
+                  type="textarea"
+                  clearable={selectOptions.clearable}
+                  size={selectOptions.size}
+                  disabled={selectOptions.disabled}
+                  v-model={formModel[selectOptions.name]}
+                ></el-select>
+              </el-form-item>
+            </ContainerTool>
+          );
+        case 'SelectMultiple':
+          const selectMultipleOptions = (config as SelectMultipleConfigType)
+            .options;
+          formModel[selectMultipleOptions.name] =
+            formModel[selectMultipleOptions.name] || [];
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === props.config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={selectMultipleOptions.label}
+                prop={selectMultipleOptions.name}
+              >
+                <el-select
+                  type="textarea"
+                  clearable={selectMultipleOptions.clearable}
+                  size={selectMultipleOptions.size}
+                  disabled={selectMultipleOptions.disabled}
+                  v-model={formModel[selectMultipleOptions.name]}
+                ></el-select>
+              </el-form-item>
+            </ContainerTool>
+          );
         // case 'Radio':
         //   return (
         //     <el-radio-group>
@@ -166,32 +223,6 @@ export default defineComponent({
         //       <el-checkbox label="Option B" />
         //       <el-checkbox label="Option C" />
         //     </el-checkbox-group>
-        //   );
-        // case 'Select':
-        //   const selectOptions = [
-        //     {
-        //       value: 'Option1',
-        //       label: 'Option1',
-        //     },
-        //     {
-        //       value: 'Option2',
-        //       label: 'Option2',
-        //       disabled: true,
-        //     },
-        //   ];
-        //   return (
-        //     <el-select placeholder="Select">
-        //       {selectOptions.map((item) => {
-        //         return (
-        //           <el-option
-        //             key={item.value}
-        //             label={item.label}
-        //             value={item.value}
-        //             disabled={item.disabled}
-        //           />
-        //         );
-        //       })}
-        //     </el-select>
         //   );
         // case 'Switch':
         //   return (
@@ -270,19 +301,6 @@ export default defineComponent({
               </ContainerTool>
             </>
           );
-        // return (
-        //   <>
-        //     <el-row>
-        //       {props.config.tasks.map((list: any) => {
-        //         return (
-        //           <el-col span={12}>
-        //             <nested-draggable tasks={list} />
-        //           </el-col>
-        //         );
-        //       })}
-        //     </el-row>
-        //   </>
-        // );
         default:
           break;
       }

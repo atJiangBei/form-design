@@ -15,7 +15,7 @@ export const formModel = reactive<{ [key: string]: any }>({});
 export const formRules = reactive<{ [key: string]: any }>({});
 
 export const formConfig = reactive({
-  labelWidth: 120,
+  labelWidth: 100,
   labelPosition: 'right',
 });
 
@@ -66,7 +66,12 @@ export const renderComponentConfig = ref([
   // },
 ]);
 
-export const hasValueComponentTypes = ['Input'];
+export const hasValueComponentTypes = [
+  'Input',
+  'InputNumber',
+  'Select',
+  'SelectMultiple',
+];
 
 export const deleteComponent = (id: string) => {
   console.log(id);

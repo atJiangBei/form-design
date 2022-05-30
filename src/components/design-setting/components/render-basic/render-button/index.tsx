@@ -1,9 +1,10 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { ButtonConfigOptionsType } from '@/components/design-side/types/options';
 
 export default defineComponent({
   props: {
     modelOptions: {
-      type: Object,
+      type: Object as PropType<ButtonConfigOptionsType>,
       default: () => ({}),
     },
   },
@@ -21,6 +22,9 @@ export default defineComponent({
               <el-option label="danger" value="danger" />
               <el-option label="warning" value="warning" />
             </el-select>
+          </el-form-item>
+          <el-form-item label="禁用">
+            <el-switch v-model={modelOptions.disabled}></el-switch>
           </el-form-item>
         </>
       );

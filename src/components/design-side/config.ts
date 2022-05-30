@@ -3,6 +3,7 @@ import { BasicComponentsType, ContainerComponentsType } from './types/options';
 
 export const containerComponents = ref<ContainerComponentsType>([
   {
+    name: '栅格-2',
     type: 'Grid',
     id: 'asfdsfsd',
     icon: 'Grid',
@@ -21,6 +22,80 @@ export const containerComponents = ref<ContainerComponentsType>([
         id: 'trhvsgf',
         options: {
           span: 12,
+        },
+        list: [],
+      },
+    ],
+  },
+  {
+    name: '栅格-3',
+    type: 'Grid',
+    id: 'fkghfjgh',
+    icon: 'Grid',
+    options: {},
+    cols: [
+      {
+        type: 'Col',
+        id: 'sdfsdgdfh',
+        options: {
+          span: 8,
+        },
+        list: [],
+      },
+      {
+        type: 'Col',
+        id: 'jkiului',
+        options: {
+          span: 8,
+        },
+        list: [],
+      },
+      {
+        type: 'Col',
+        id: 'kghjgs',
+        options: {
+          span: 8,
+        },
+        list: [],
+      },
+    ],
+  },
+  {
+    name: '栅格-4',
+    type: 'Grid',
+    id: 'hdfvsdgsd',
+    icon: 'Grid',
+    options: {},
+    cols: [
+      {
+        type: 'Col',
+        id: 'sdfsdsdgh',
+        options: {
+          span: 6,
+        },
+        list: [],
+      },
+      {
+        type: 'Col',
+        id: 'uyjkdsd',
+        options: {
+          span: 6,
+        },
+        list: [],
+      },
+      {
+        type: 'Col',
+        id: 'iojd',
+        options: {
+          span: 6,
+        },
+        list: [],
+      },
+      {
+        type: 'Col',
+        id: 'ldsgsd',
+        options: {
+          span: 6,
         },
         list: [],
       },
@@ -96,11 +171,32 @@ export const basicComponents = ref<BasicComponentsType>([
       step: 1,
     },
   },
-  // {
-  //   type: 'Select',
-  //   id: 'fdgdfgdfg',
-  //   icon: 'Select',
-  // },
+  {
+    type: 'Select',
+    id: 'dbfgnfg',
+    icon: 'Edit',
+    options: {
+      name: 'Select',
+      label: 'Select',
+      size: 'default',
+      disabled: false,
+      required: false,
+      clearable: true,
+    },
+  },
+  {
+    type: 'SelectMultiple',
+    id: 'vsdfsdfsd',
+    icon: 'Edit',
+    options: {
+      name: 'Select',
+      label: 'Select',
+      size: 'default',
+      disabled: false,
+      required: false,
+      clearable: true,
+    },
+  },
   // {
   //   type: 'DatePicker',
   //   id: 'asdasdas',

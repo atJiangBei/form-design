@@ -9,6 +9,7 @@ export type ColConfigType = {
   list: [GridConfigType, ButtonConfigType, InputConfigType] | [];
 };
 export type GridConfigType = {
+  name: string;
   type: 'Grid';
   id: string;
   icon: 'Grid';
@@ -16,7 +17,11 @@ export type GridConfigType = {
   cols: ColConfigType[];
 };
 
-export type ContainerComponentsType = [GridConfigType];
+export type ContainerComponentsType = [
+  GridConfigType,
+  GridConfigType,
+  GridConfigType
+];
 
 export type ButtonConfigOptionsType = {
   name: string;
@@ -95,12 +100,45 @@ export type DividerConfigType = {
   options: DividerConfigOptionsType;
 };
 
+export type SelectConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+  required: boolean;
+  clearable: boolean;
+};
+export type SelectConfigType = {
+  type: 'Select';
+  id: string;
+  icon: string;
+  options: SelectConfigOptionsType;
+};
+
+export type SelectMultipleConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+  required: boolean;
+  clearable: boolean;
+};
+
+export type SelectMultipleConfigType = {
+  type: 'SelectMultiple';
+  id: string;
+  icon: string;
+  options: SelectMultipleConfigOptionsType;
+};
+
 export type BasicComponentsType = [
   DividerConfigType,
   ButtonConfigType,
   InputConfigType,
   TextareaConfigType,
-  InputNumberConfigType
+  InputNumberConfigType,
+  SelectConfigType,
+  SelectMultipleConfigType
 ];
 
 export type AllComponentType =
@@ -110,4 +148,6 @@ export type AllComponentType =
   | InputConfigType
   | DividerConfigType
   | TextareaConfigType
-  | InputNumberConfigType;
+  | InputNumberConfigType
+  | SelectConfigType
+  | SelectMultipleConfigType;
