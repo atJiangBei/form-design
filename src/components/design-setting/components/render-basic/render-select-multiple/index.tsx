@@ -1,12 +1,12 @@
 import { defineComponent, nextTick, PropType, ref, watch } from 'vue';
-import { InputConfigOptionsType } from '@/components/design-side/types/options';
+import { SelectConfigOptionsType } from '@/components/design-side/types/options';
 import { formModel, formRules, templateFormRef } from '@/model/form';
 import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   props: {
     modelOptions: {
-      type: Object as PropType<InputConfigOptionsType>,
+      type: Object as PropType<SelectConfigOptionsType>,
       default: () => ({}),
     },
   },
@@ -17,9 +17,6 @@ export default defineComponent({
       () => props.modelOptions,
       () => {
         onlyName.value = props.modelOptions.name;
-        //假如无此步骤，input值又未改变，formModel此处为空对象{}
-        //formModel[onlyName.value] = formModel[onlyName.value] || '';
-        // console.log(22, formModel, onlyName.value);
       },
       {
         immediate: true,
@@ -71,12 +68,6 @@ export default defineComponent({
           </el-form-item>
           <el-form-item label="标签">
             <el-input v-model={modelOptions.label}></el-input>
-          </el-form-item>
-          <el-form-item label="显示类型">
-            <el-select v-model={modelOptions.type} placeholder="Select">
-              <el-option label="text" value="text" />
-              <el-option label="password" value="password" />
-            </el-select>
           </el-form-item>
           {/* <el-form-item label="组件大小">
             <el-select v-model={modelOptions.size} placeholder="Select">

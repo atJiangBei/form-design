@@ -60,7 +60,11 @@ export default defineComponent({
       return (
         <>
           <el-form-item label="唯一名称" prop="name">
-            <el-input v-model={onlyName.value} onChange={onChange}></el-input>
+            <el-input
+              v-model={onlyName.value}
+              onChange={onChange}
+              disabled
+            ></el-input>
           </el-form-item>
           <el-form-item label="标签">
             <el-input v-model={modelOptions.label}></el-input>

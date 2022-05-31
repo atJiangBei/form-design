@@ -28,7 +28,7 @@
               :clone="cloneData"
             >
               <template #item="{ element }">
-                <label-item :label="element.type" :icon="element.icon">
+                <label-item :label="element.name" :icon="element.icon">
                 </label-item>
               </template>
             </draggable>

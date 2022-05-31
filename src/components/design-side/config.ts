@@ -105,6 +105,7 @@ export const containerComponents = ref<ContainerComponentsType>([
 
 export const basicComponents = ref<BasicComponentsType>([
   {
+    name: '分割线',
     type: 'Divider',
     id: 'fdsfdsgfj',
     icon: 'Tools',
@@ -116,6 +117,7 @@ export const basicComponents = ref<BasicComponentsType>([
     },
   },
   {
+    name: '按钮',
     type: 'Button',
     id: 'asdasdas',
     icon: 'Tools',
@@ -129,6 +131,7 @@ export const basicComponents = ref<BasicComponentsType>([
   },
 
   {
+    name: '单行输入',
     type: 'Input',
     id: 'dasdas',
     icon: 'Edit',
@@ -142,6 +145,7 @@ export const basicComponents = ref<BasicComponentsType>([
     },
   },
   {
+    name: '多行输入',
     type: 'Textarea',
     id: 'dgdfhgj',
     icon: 'Edit',
@@ -157,6 +161,7 @@ export const basicComponents = ref<BasicComponentsType>([
     },
   },
   {
+    name: '数字输入',
     type: 'InputNumber',
     id: 'sdgdfgdf',
     icon: 'Edit',
@@ -172,6 +177,7 @@ export const basicComponents = ref<BasicComponentsType>([
     },
   },
   {
+    name: '单选下拉',
     type: 'Select',
     id: 'dbfgnfg',
     icon: 'Edit',
@@ -182,15 +188,17 @@ export const basicComponents = ref<BasicComponentsType>([
       disabled: false,
       required: false,
       clearable: true,
+      optionItems: [{ label: '选项1', value: 'select1' }],
     },
   },
   {
+    name: '多选下拉',
     type: 'SelectMultiple',
     id: 'vsdfsdfsd',
     icon: 'Edit',
     options: {
       name: 'Select',
-      label: 'Select',
+      label: 'SelectMultiple',
       size: 'default',
       disabled: false,
       required: false,

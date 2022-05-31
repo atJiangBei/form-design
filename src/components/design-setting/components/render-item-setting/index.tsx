@@ -6,6 +6,8 @@ import RenderCol from '../render-basic/renter-col';
 import RenderDivider from '../render-basic/render-divider';
 import RenderTextarea from '../render-basic/render-textarea';
 import RenderInputNumber from '../render-basic/render-input-number';
+import RenderSelect from '../render-basic/render-select';
+import RenderSelectMultiple from '../render-basic/render-select-multiple';
 
 export default defineComponent({
   name: 'render-item-setting',
@@ -46,5 +48,9 @@ function renderItem(type: string, options: any) {
       return <RenderTextarea modelOptions={options} />;
     case 'INPUTNUMBER':
       return <RenderInputNumber modelOptions={options} />;
+    case 'SELECT':
+      return <RenderSelect modelOptions={options} />;
+    case 'SELECTMULTIPLE':
+      return <RenderSelectMultiple modelOptions={options} />;
   }
 }

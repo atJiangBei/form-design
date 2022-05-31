@@ -31,6 +31,7 @@ export type ButtonConfigOptionsType = {
   disabled: boolean;
 };
 export type ButtonConfigType = {
+  name: string;
   type: 'Button';
   id: string;
   icon: string;
@@ -46,6 +47,7 @@ export type InputConfigOptionsType = {
 };
 
 export type InputConfigType = {
+  name: string;
   type: 'Input';
   id: string;
   icon: string;
@@ -63,6 +65,7 @@ export type TextareaConfigOptionsType = {
   rows: number;
 };
 export type TextareaConfigType = {
+  name: string;
   type: 'Textarea';
   id: string;
   icon: string;
@@ -80,6 +83,7 @@ export type InputNumberConfigOptionsType = {
   step: number;
 };
 export type InputNumberConfigType = {
+  name: string;
   type: 'InputNumber';
   id: string;
   icon: string;
@@ -94,6 +98,7 @@ export type DividerConfigOptionsType = {
 };
 
 export type DividerConfigType = {
+  name: string;
   type: 'Divider';
   id: string;
   icon: string;
@@ -107,8 +112,10 @@ export type SelectConfigOptionsType = {
   disabled: boolean;
   required: boolean;
   clearable: boolean;
+  optionItems: { label: string; value: string }[];
 };
 export type SelectConfigType = {
+  name: string;
   type: 'Select';
   id: string;
   icon: string;
@@ -125,6 +132,7 @@ export type SelectMultipleConfigOptionsType = {
 };
 
 export type SelectMultipleConfigType = {
+  name: string;
   type: 'SelectMultiple';
   id: string;
   icon: string;
