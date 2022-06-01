@@ -69,12 +69,12 @@ export const renderComponentConfig = ref([
 export const hasValueComponentTypes = [
   'Input',
   'InputNumber',
+  'Textarea',
   'Select',
   'SelectMultiple',
 ];
 
 export const deleteComponent = (id: string) => {
-  console.log(id);
   const result = findParentCurrentIndex(id);
   const [parent, index] = result;
   if (parent.length > 0 && index > -1) {
@@ -93,6 +93,10 @@ export const deleteComponentFormName = (componentConfig: AllComponentType) => {
       if (name) {
         delete formModel[name];
       }
+    } else if (config.type === 'Card') {
+      config.list.forEach((item) => {
+        recursion(item);
+      });
     } else if (config.type === 'Grid') {
       console.log(2, config.cols);
       config.cols.forEach((col) => {
@@ -156,6 +160,10 @@ const findParentCurrentIndex = (id: string) => {
     } else {
       for (let i = 0; i < arr.length; i++) {
         const item = arr[i];
+        if (item.type === 'Card') {
+          recursion(item.list);
+          continue;
+        }
         if (item.type === 'Grid') {
           recursion(item.cols);
           continue;

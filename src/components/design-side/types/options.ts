@@ -1,3 +1,15 @@
+export type CardConfigOptionsType = {
+  header: string;
+  shadow: 'always' | 'hover' | 'never';
+};
+export type CardConfigType = {
+  name: string;
+  type: 'Card';
+  id: string;
+  icon: 'Grid';
+  options: CardConfigOptionsType;
+  list: [];
+};
 export type GridConfigOptionsType = {};
 export type ColConfigOptionsType = {
   span: number;
@@ -18,6 +30,7 @@ export type GridConfigType = {
 };
 
 export type ContainerComponentsType = [
+  CardConfigType,
   GridConfigType,
   GridConfigType,
   GridConfigType
@@ -150,6 +163,7 @@ export type BasicComponentsType = [
 ];
 
 export type AllComponentType =
+  | CardConfigType
   | GridConfigType
   | ColConfigType
   | ButtonConfigType

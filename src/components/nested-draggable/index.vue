@@ -1,6 +1,6 @@
 <template>
   <draggable
-    class="nested-content"
+    class="draggable-nested-list"
     tag="ul"
     item-key="id"
     animation="300"
@@ -9,11 +9,8 @@
     :group="{ name: 'content' }"
   >
     <template #item="{ element }">
-      <li class="content-item">
+      <li class="draggable-nested-item">
         <render-component :config="element" />
-        <!-- <template v-if="element.tasks">
-          <nested-draggable :tasks="element.tasks" />
-        </template> -->
       </li>
     </template>
   </draggable>
@@ -35,7 +32,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.nested-content {
+.draggable-nested-list {
   box-sizing: border-box;
   flex: 1;
   width: 100%;
@@ -44,9 +41,9 @@ export default defineComponent({
   list-style: none;
   border: 1px dashed #00497d;
 }
-.content-item {
-  padding: 5px;
-  border: 1px dashed #0092ff;
+.draggable-nested-item {
   cursor: move;
+  /* padding: 5px; */
+  border: 1px dashed #0092ff;
 }
 </style>

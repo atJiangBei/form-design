@@ -8,6 +8,7 @@ import {
 import './index.less';
 import ContainerTool from './../container-tool/index.vue';
 import {
+  CardConfigType,
   GridConfigType,
   ButtonConfigType,
   InputConfigType,
@@ -271,6 +272,21 @@ export default defineComponent({
         //       element
         //     </el-link>
         //   );
+        case 'Card':
+          const cardOptions = (config as CardConfigType).options;
+          return (
+            <ContainerTool
+              contentType={config.type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+              onCopy={() => onCopy(config.id)}
+            >
+              <el-card header={cardOptions.header} shadow={cardOptions.shadow}>
+                <nested-draggable tasks={(config as CardConfigType).list} />
+              </el-card>
+            </ContainerTool>
+          );
         case 'Grid':
           return (
             <>

@@ -18,14 +18,14 @@
     </header>
     <section>
       <div>
-        <div>{{ JSON.stringify(formModel) }}</div>
-        {{ JSON.stringify(formRules) }}
         <el-form
           :model="formModel"
           :rules="formRules"
           v-bind="formConfig"
           ref="formRef"
         >
+          <div>{{ JSON.stringify(formModel) }}</div>
+          {{ JSON.stringify(formRules) }}
           <nested-draggable :tasks="renderComponentConfig"></nested-draggable>
         </el-form>
       </div>
@@ -131,6 +131,14 @@ const onPreview = () => {
     flex: 1;
     padding: 10px 10px 0 10px;
     background: #f1f2f3;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #999b9c;
+      border-radius: 5px;
+    }
     > div {
       background: #fff;
       height: 100%;
@@ -146,7 +154,7 @@ const onPreview = () => {
 
     .el-form {
       height: 100%;
-      > .nested-content {
+      > .draggable-nested-list {
         height: 100%;
         border: 0;
       }

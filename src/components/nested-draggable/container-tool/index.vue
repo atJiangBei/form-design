@@ -58,7 +58,7 @@ export default defineComponent({
 .container-tool {
   position: relative;
   cursor: move;
-  padding: 5px;
+  padding: 5px 0px;
   border: 2px solid transparent;
   border-radius: 3px;
   box-sizing: border-box;

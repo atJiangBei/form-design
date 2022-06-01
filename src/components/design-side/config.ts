@@ -3,6 +3,17 @@ import { BasicComponentsType, ContainerComponentsType } from './types/options';
 
 export const containerComponents = ref<ContainerComponentsType>([
   {
+    name: '卡片',
+    type: 'Card',
+    id: 'asfdsfsd',
+    icon: 'Grid',
+    options: {
+      header: 'card',
+      shadow: 'hover',
+    },
+    list: [],
+  },
+  {
     name: '栅格-2',
     type: 'Grid',
     id: 'asfdsfsd',
