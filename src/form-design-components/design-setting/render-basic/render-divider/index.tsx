@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue';
-import { DividerConfigOptionsType } from '@/form-design-components/design-side/types/options';
+import { DividerConfigOptionsType } from '@/form-design-components/types/form-design-el';
 
 export default defineComponent({
   props: {

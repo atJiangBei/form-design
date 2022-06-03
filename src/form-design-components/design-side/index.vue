@@ -40,8 +40,8 @@
 </template>
 
 <script lang="ts">
-import LabelItem from './components/label-item/index.vue';
-import { reactive, ref, defineComponent } from 'vue';
+import LabelItem from './label-item/index.vue';
+import { ref, defineComponent } from 'vue';
 import { basicComponents, containerComponents } from './config';
 import { createId } from './../utils/crud';
 

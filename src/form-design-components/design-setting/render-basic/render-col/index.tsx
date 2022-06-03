@@ -1,5 +1,5 @@
 import { defineComponent, nextTick, PropType, ref, watch } from 'vue';
-import { ColConfigOptionsType } from '@/form-design-components/design-side/types/options';
+import { ColConfigOptionsType } from '@/form-design-components/types/form-design-el';
 
 export default defineComponent({
   props: {

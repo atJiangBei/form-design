@@ -14,7 +14,7 @@ import {
   SelectConfigType,
   SelectMultipleConfigType,
   AllComponentType,
-} from '@/form-design-components/design-side/types/options';
+} from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '../../types/provide-inject';
 import { selectedItem } from '../../store/globalData';
 

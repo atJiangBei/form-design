@@ -2,7 +2,7 @@ import {
   AllComponentType,
   GridConfigType,
   ColConfigType,
-} from '../design-side/types/options';
+} from '@/form-design-components/types/form-design-el';
 import { selectedItem } from '../store/globalData';
 
 let num = 0;

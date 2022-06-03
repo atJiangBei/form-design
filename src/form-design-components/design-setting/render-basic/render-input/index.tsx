@@ -1,5 +1,5 @@
 import { defineComponent, nextTick, PropType, ref, watch, inject } from 'vue';
-import { InputConfigOptionsType } from '@/form-design-components/design-side/types/options';
+import { InputConfigOptionsType } from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '@/form-design-components/types/provide-inject';
 
 import {

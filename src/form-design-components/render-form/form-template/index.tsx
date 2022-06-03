@@ -10,7 +10,7 @@ import {
   TextareaConfigType,
   InputNumberConfigType,
   AllComponentType,
-} from '@/form-design-components/design-side/types/options';
+} from '@/form-design-components/types/form-design-el';
 
 export default defineComponent({
   name: 'FormTemplate',

@@ -1,5 +1,5 @@
 import { defineComponent, nextTick, PropType, ref, watch, inject } from 'vue';
-import { TextareaConfigOptionsType } from '@/form-design-components/design-side/types/options';
+import { TextareaConfigOptionsType } from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '@/form-design-components/types/provide-inject';
 import {
   templateFormRef,

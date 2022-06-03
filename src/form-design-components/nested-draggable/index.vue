@@ -58,7 +58,7 @@ export default defineComponent({
   box-sizing: border-box;
   flex: 1;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   min-height: 50px;
   list-style: none;
   border: 1px dashed #00497d;

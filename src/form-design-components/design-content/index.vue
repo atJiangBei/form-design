@@ -163,6 +163,7 @@ export default defineComponent({
   box-sizing: border-box;
   flex: 1;
   height: 100vh;
+  min-width: 700px;
   overflow-x: hidden;
   overflow-y: auto;
   background: #fff;
@@ -191,7 +192,7 @@ export default defineComponent({
     }
     .design-content-body {
       background: #fff;
-      height: 100%;
+      min-height: 100%;
       position: relative;
     }
     .no-data-tip {
@@ -208,11 +209,11 @@ export default defineComponent({
       color: #999;
     }
     .el-form {
-      height: 100%;
+      min-height: calc(100vh - 100px);
       position: relative;
       z-index: 1;
       > .draggable-nested-list {
-        height: 100%;
+        min-height: calc(100vh - 100px);
         border: 0;
       }
     }

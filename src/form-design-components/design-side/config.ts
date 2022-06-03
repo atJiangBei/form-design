@@ -1,5 +1,8 @@
 import { reactive, ref } from 'vue';
-import { BasicComponentsType, ContainerComponentsType } from './types/options';
+import {
+  BasicComponentsType,
+  ContainerComponentsType,
+} from '@/form-design-components/types/form-design-el';
 
 export const containerComponents = ref<ContainerComponentsType>([
   {
