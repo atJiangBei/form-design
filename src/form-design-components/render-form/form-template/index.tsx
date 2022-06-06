@@ -9,6 +9,8 @@ import {
   DividerConfigType,
   TextareaConfigType,
   InputNumberConfigType,
+  SelectConfigType,
+  SelectMultipleConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 
@@ -96,6 +98,59 @@ export default defineComponent({
                 step={inputNumberOptions.step}
                 v-model={formModel[inputNumberOptions.name]}
               ></el-input-number>
+            </el-form-item>
+          );
+        case 'Select':
+          const selectOptions = (config as SelectConfigType).options;
+          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
+          return (
+            <el-form-item label={selectOptions.label} prop={selectOptions.name}>
+              <el-select
+                type="textarea"
+                clearable={selectOptions.clearable}
+                size={selectOptions.size}
+                disabled={selectOptions.disabled}
+                v-model={formModel[selectOptions.name]}
+              >
+                {selectOptions.optionItems.map((item) => {
+                  return (
+                    <el-option
+                      key={item.value}
+                      label={item.label}
+                      value={item.value}
+                    />
+                  );
+                })}
+              </el-select>
+            </el-form-item>
+          );
+        case 'SelectMultiple':
+          const selectMultipleOptions = (config as SelectMultipleConfigType)
+            .options;
+          formModel[selectMultipleOptions.name] =
+            formModel[selectMultipleOptions.name] || [];
+          return (
+            <el-form-item
+              label={selectMultipleOptions.label}
+              prop={selectMultipleOptions.name}
+            >
+              <el-select
+                multiple
+                clearable={selectMultipleOptions.clearable}
+                size={selectMultipleOptions.size}
+                disabled={selectMultipleOptions.disabled}
+                v-model={formModel[selectMultipleOptions.name]}
+              >
+                {selectMultipleOptions.optionItems.map((item) => {
+                  return (
+                    <el-option
+                      key={item.value}
+                      label={item.label}
+                      value={item.value}
+                    />
+                  );
+                })}
+              </el-select>
             </el-form-item>
           );
         case 'Card':

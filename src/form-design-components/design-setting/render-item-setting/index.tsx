@@ -51,6 +51,8 @@ function renderItem(type: string, options: any) {
     case 'SELECT':
       return <RenderSelect modelOptions={options} />;
     case 'SELECTMULTIPLE':
-      return <RenderSelectMultiple modelOptions={options} />;
+      console.log('sm', options);
+      return <RenderSelect modelOptions={options} />;
+    //return <RenderSelectMultiple modelOptions={options} />;
   }
 }

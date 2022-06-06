@@ -202,7 +202,7 @@ export const basicComponents = ref<BasicComponentsType>([
       disabled: false,
       required: false,
       clearable: true,
-      optionItems: [{ label: '选项1', value: 'select1' }],
+      optionItems: [],
     },
   },
   {
@@ -212,11 +212,12 @@ export const basicComponents = ref<BasicComponentsType>([
     icon: 'Edit',
     options: {
       name: 'Select',
-      label: 'SelectMultiple',
+      label: 'Multiple',
       size: 'default',
       disabled: false,
       required: false,
       clearable: true,
+      optionItems: [],
     },
   },
   // {

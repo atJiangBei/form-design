@@ -173,13 +173,24 @@ export default defineComponent({
                   size={selectOptions.size}
                   disabled={selectOptions.disabled}
                   v-model={formModel[selectOptions.name]}
-                ></el-select>
+                >
+                  {selectOptions.optionItems.map((item) => {
+                    return (
+                      <el-option
+                        key={item.value}
+                        label={item.label}
+                        value={item.value}
+                      />
+                    );
+                  })}
+                </el-select>
               </el-form-item>
             </ContainerTool>
           );
         case 'SelectMultiple':
           const selectMultipleOptions = (config as SelectMultipleConfigType)
             .options;
+          console.log(selectMultipleOptions);
           formModel[selectMultipleOptions.name] =
             formModel[selectMultipleOptions.name] || [];
           return (
@@ -194,12 +205,22 @@ export default defineComponent({
                 prop={selectMultipleOptions.name}
               >
                 <el-select
-                  type="textarea"
+                  multiple
                   clearable={selectMultipleOptions.clearable}
                   size={selectMultipleOptions.size}
                   disabled={selectMultipleOptions.disabled}
                   v-model={formModel[selectMultipleOptions.name]}
-                ></el-select>
+                >
+                  {selectMultipleOptions.optionItems.map((item) => {
+                    return (
+                      <el-option
+                        key={item.value}
+                        label={item.label}
+                        value={item.value}
+                      />
+                    );
+                  })}
+                </el-select>
               </el-form-item>
             </ContainerTool>
           );

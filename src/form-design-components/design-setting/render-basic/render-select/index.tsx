@@ -62,6 +62,7 @@ export default defineComponent({
         templateFormRef.value.clearValidate();
       });
     };
+
     return () => {
       const { modelOptions } = props;
       return (
@@ -90,7 +91,7 @@ export default defineComponent({
             <el-switch v-model={modelOptions.required} onChange={setRequired} />
           </el-form-item>
           <el-divider content-position="center">选项设置</el-divider>
-          <RenderSelectOption options={modelOptions.optionItems} />
+          <RenderSelectOption currentOptions={modelOptions.optionItems} />
         </>
       );
     };

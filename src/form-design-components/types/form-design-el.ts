@@ -142,6 +142,7 @@ export type SelectMultipleConfigOptionsType = {
   disabled: boolean;
   required: boolean;
   clearable: boolean;
+  optionItems: { label: string; value: string }[];
 };
 
 export type SelectMultipleConfigType = {
