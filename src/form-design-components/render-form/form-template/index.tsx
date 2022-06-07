@@ -11,6 +11,7 @@ import {
   InputNumberConfigType,
   SelectConfigType,
   SelectMultipleConfigType,
+  LinkConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 
@@ -153,6 +154,20 @@ export default defineComponent({
               </el-select>
             </el-form-item>
           );
+        case 'Link':
+          const linkOptions = (config as LinkConfigType).options;
+          return (
+            <el-link
+              target="_blank"
+              type={linkOptions.type}
+              underline={linkOptions.underline}
+              href={linkOptions.href}
+              disabled={linkOptions.disabled}
+            >
+              {linkOptions.text}
+            </el-link>
+          );
+
         case 'Card':
           const cardOptions = (config as CardConfigType).options;
           return (
@@ -182,7 +197,11 @@ export default defineComponent({
     };
     return () => {
       const { templateConfig } = props;
-      return <div>{render(templateConfig as any)}</div>;
+      return (
+        <div style="padding:0 5px;margin-bottom:5px;">
+          {render(templateConfig as any)}
+        </div>
+      );
     };
   },
 });

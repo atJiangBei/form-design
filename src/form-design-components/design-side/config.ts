@@ -17,7 +17,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     list: [],
   },
   {
-    name: '栅格-2',
+    name: '两栅',
     type: 'Grid',
     id: 'asfdsfsd',
     icon: 'Grid',
@@ -42,7 +42,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     ],
   },
   {
-    name: '栅格-3',
+    name: '三栅',
     type: 'Grid',
     id: 'fkghfjgh',
     icon: 'Grid',
@@ -75,7 +75,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     ],
   },
   {
-    name: '栅格-4',
+    name: '四栅',
     type: 'Grid',
     id: 'hdfvsdgsd',
     icon: 'Grid',
@@ -220,6 +220,19 @@ export const basicComponents = ref<BasicComponentsType>([
       optionItems: [],
     },
   },
+  {
+    name: '链接',
+    type: 'Link',
+    id: 'bfdnjmgh',
+    icon: 'Edit',
+    options: {
+      type: 'primary',
+      underline: true,
+      disabled: false,
+      href: '',
+      text: 'link',
+    },
+  },
   // {
   //   type: 'DatePicker',
   //   id: 'asdasdas',
@@ -234,16 +247,6 @@ export const basicComponents = ref<BasicComponentsType>([
   //   type: 'Image',
   //   id: 'sdfsdgsd',
   //   icon: 'Picture',
-  // },
-  // {
-  //   type: 'Link',
-  //   id: 'fsdfsdfs',
-  //   icon: 'Link',
-  // },
-  // {
-  //   type: 'Tag',
-  //   id: 'sdfdsfs',
-  //   icon: 'CollectionTag',
   // },
   // {
   //   type: 'Radio',

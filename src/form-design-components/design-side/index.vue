@@ -85,6 +85,7 @@ export default defineComponent({
 .form-side {
   box-sizing: border-box;
   width: 260px;
+  min-width: 260px;
   padding: 10px;
 }
 .label-list {

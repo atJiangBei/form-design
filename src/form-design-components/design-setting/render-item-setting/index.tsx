@@ -8,6 +8,8 @@ import RenderTextarea from '../render-basic/render-textarea';
 import RenderInputNumber from '../render-basic/render-input-number';
 import RenderSelect from '../render-basic/render-select';
 import RenderSelectMultiple from '../render-basic/render-select-multiple';
+import RenderCard from '../render-basic/render-card';
+import RenderLink from '../render-basic/render-link';
 
 export default defineComponent({
   name: 'render-item-setting',
@@ -40,8 +42,6 @@ function renderItem(type: string, options: any) {
       return <RenderButton modelOptions={options} />;
     case 'INPUT':
       return <RenderInput modelOptions={options} />;
-    case 'COL':
-      return <RenderCol modelOptions={options} />;
     case 'DIVIDER':
       return <RenderDivider modelOptions={options} />;
     case 'TEXTAREA':
@@ -51,8 +51,13 @@ function renderItem(type: string, options: any) {
     case 'SELECT':
       return <RenderSelect modelOptions={options} />;
     case 'SELECTMULTIPLE':
-      console.log('sm', options);
       return <RenderSelect modelOptions={options} />;
+    case 'LINK':
+      return <RenderLink modelOptions={options} />;
+    case 'COL':
+      return <RenderCol modelOptions={options} />;
+    case 'CARD':
+      return <RenderCard modelOptions={options} />;
     //return <RenderSelectMultiple modelOptions={options} />;
   }
 }

@@ -153,6 +153,21 @@ export type SelectMultipleConfigType = {
   options: SelectMultipleConfigOptionsType;
 };
 
+export type LinkConfigOptionsType = {
+  type: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
+  underline: boolean;
+  disabled: boolean;
+  href: string;
+  text: string;
+};
+export type LinkConfigType = {
+  name: string;
+  type: 'Link';
+  id: string;
+  icon: string;
+  options: LinkConfigOptionsType;
+};
+
 export type BasicComponentsType = [
   DividerConfigType,
   ButtonConfigType,
@@ -160,7 +175,8 @@ export type BasicComponentsType = [
   TextareaConfigType,
   InputNumberConfigType,
   SelectConfigType,
-  SelectMultipleConfigType
+  SelectMultipleConfigType,
+  LinkConfigType
 ];
 
 export type AllComponentType =
@@ -173,4 +189,5 @@ export type AllComponentType =
   | TextareaConfigType
   | InputNumberConfigType
   | SelectConfigType
-  | SelectMultipleConfigType;
+  | SelectMultipleConfigType
+  | LinkConfigType;

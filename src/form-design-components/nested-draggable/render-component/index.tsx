@@ -13,6 +13,7 @@ import {
   InputNumberConfigType,
   SelectConfigType,
   SelectMultipleConfigType,
+  LinkConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '../../types/provide-inject';
@@ -224,6 +225,27 @@ export default defineComponent({
               </el-form-item>
             </ContainerTool>
           );
+        case 'Link':
+          const linkOptions = (config as LinkConfigType).options;
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-link
+                target="_blank"
+                type={linkOptions.type}
+                underline={linkOptions.underline}
+                href={linkOptions.href}
+                disabled={linkOptions.disabled}
+              >
+                {linkOptions.text}
+              </el-link>
+            </ContainerTool>
+          );
+
         // case 'Radio':
         //   return (
         //     <el-radio-group>
