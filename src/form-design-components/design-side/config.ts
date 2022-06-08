@@ -233,11 +233,30 @@ export const basicComponents = ref<BasicComponentsType>([
       text: 'link',
     },
   },
-  // {
-  //   type: 'DatePicker',
-  //   id: 'asdasdas',
-  //   icon: 'Timer',
-  // },
+  {
+    name: '日期',
+    type: 'DatePicker',
+    id: 'jvjhxddf',
+    icon: 'Timer',
+    options: {
+      name: 'DatePicker',
+      label: 'Date',
+      size: 'default',
+      disabled: false,
+    },
+  },
+  {
+    name: '日期范围',
+    type: 'DatePickerRange',
+    id: 'sdgdfhfg',
+    icon: 'Timer',
+    options: {
+      name: 'DatePickerRange',
+      label: 'DateRange',
+      size: 'default',
+      disabled: false,
+    },
+  },
   // {
   //   type: 'TimePicker',
   //   id: 'asdasdasdas',

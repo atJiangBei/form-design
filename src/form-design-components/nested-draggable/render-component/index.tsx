@@ -14,6 +14,8 @@ import {
   SelectConfigType,
   SelectMultipleConfigType,
   LinkConfigType,
+  DatePickerConfigType,
+  DatePickerRangeConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '../../types/provide-inject';
@@ -191,7 +193,6 @@ export default defineComponent({
         case 'SelectMultiple':
           const selectMultipleOptions = (config as SelectMultipleConfigType)
             .options;
-          console.log(selectMultipleOptions);
           formModel[selectMultipleOptions.name] =
             formModel[selectMultipleOptions.name] || [];
           return (
@@ -245,7 +246,57 @@ export default defineComponent({
               </el-link>
             </ContainerTool>
           );
-
+        case 'DatePicker':
+          const datePickerOptions = (config as DatePickerConfigType).options;
+          formModel[datePickerOptions.name] =
+            formModel[datePickerOptions.name] || '';
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={datePickerOptions.label}
+                prop={datePickerOptions.name}
+              >
+                <el-date-picker
+                  type="date"
+                  placeholder="Pick a Date"
+                  format="YYYY-MM-DD"
+                  size={datePickerOptions.size}
+                  v-model={formModel[datePickerOptions.name]}
+                />
+              </el-form-item>
+            </ContainerTool>
+          );
+        case 'DatePickerRange':
+          const datePickerRangeOptions = (config as DatePickerRangeConfigType)
+            .options;
+          formModel[datePickerRangeOptions.name] =
+            formModel[datePickerRangeOptions.name] || [];
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-form-item
+                label={datePickerRangeOptions.label}
+                prop={datePickerRangeOptions.name}
+              >
+                <el-date-picker
+                  type="daterange"
+                  placeholder="Pick a Date"
+                  format="YYYY-MM-DD"
+                  size={datePickerRangeOptions.size}
+                  v-model={formModel[datePickerRangeOptions.name]}
+                />
+              </el-form-item>
+            </ContainerTool>
+          );
         // case 'Radio':
         //   return (
         //     <el-radio-group>

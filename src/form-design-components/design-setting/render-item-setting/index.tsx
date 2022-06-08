@@ -10,6 +10,7 @@ import RenderSelect from '../render-basic/render-select';
 import RenderSelectMultiple from '../render-basic/render-select-multiple';
 import RenderCard from '../render-basic/render-card';
 import RenderLink from '../render-basic/render-link';
+import RenderDate from '../render-basic/render-date';
 
 export default defineComponent({
   name: 'render-item-setting',
@@ -52,6 +53,10 @@ function renderItem(type: string, options: any) {
       return <RenderSelect modelOptions={options} />;
     case 'SELECTMULTIPLE':
       return <RenderSelect modelOptions={options} />;
+    case 'DATEPICKER':
+      return <RenderDate modelOptions={options} />;
+    case 'DATEPICKERRANGE':
+      return <RenderDate modelOptions={options} />;
     case 'LINK':
       return <RenderLink modelOptions={options} />;
     case 'COL':

@@ -168,6 +168,33 @@ export type LinkConfigType = {
   options: LinkConfigOptionsType;
 };
 
+export type DatePickerConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+};
+export type DatePickerConfigType = {
+  name: string;
+  type: 'DatePicker';
+  id: string;
+  icon: string;
+  options: DatePickerConfigOptionsType;
+};
+export type DatePickerRangeConfigOptionsType = {
+  name: string;
+  label: string;
+  size: string;
+  disabled: boolean;
+};
+export type DatePickerRangeConfigType = {
+  name: string;
+  type: 'DatePickerRange';
+  id: string;
+  icon: string;
+  options: DatePickerRangeConfigOptionsType;
+};
+
 export type BasicComponentsType = [
   DividerConfigType,
   ButtonConfigType,
@@ -176,7 +203,9 @@ export type BasicComponentsType = [
   InputNumberConfigType,
   SelectConfigType,
   SelectMultipleConfigType,
-  LinkConfigType
+  LinkConfigType,
+  DatePickerConfigType,
+  DatePickerRangeConfigType
 ];
 
 export type AllComponentType =
@@ -190,4 +219,6 @@ export type AllComponentType =
   | InputNumberConfigType
   | SelectConfigType
   | SelectMultipleConfigType
-  | LinkConfigType;
+  | LinkConfigType
+  | DatePickerConfigType
+  | DatePickerRangeConfigType;

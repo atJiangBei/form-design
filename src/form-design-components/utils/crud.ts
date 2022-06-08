@@ -13,6 +13,8 @@ export const hasValueComponentTypes = [
   'Textarea',
   'Select',
   'SelectMultiple',
+  'DatePicker',
+  'DatePickerRange',
 ];
 
 export const deleteComponent = (

@@ -12,6 +12,8 @@ import {
   SelectConfigType,
   SelectMultipleConfigType,
   LinkConfigType,
+  DatePickerConfigType,
+  DatePickerRangeConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 
@@ -167,7 +169,43 @@ export default defineComponent({
               {linkOptions.text}
             </el-link>
           );
-
+        case 'DatePicker':
+          const datePickerOptions = (config as DatePickerConfigType).options;
+          formModel[datePickerOptions.name] =
+            formModel[datePickerOptions.name] || '';
+          return (
+            <el-form-item
+              label={datePickerOptions.label}
+              prop={datePickerOptions.name}
+            >
+              <el-date-picker
+                type="date"
+                placeholder="Pick a Date"
+                format="YYYY-MM-DD"
+                size={datePickerOptions.size}
+                v-model={formModel[datePickerOptions.name]}
+              />
+            </el-form-item>
+          );
+        case 'DatePickerRange':
+          const datePickerRangeOptions = (config as DatePickerRangeConfigType)
+            .options;
+          formModel[datePickerRangeOptions.name] =
+            formModel[datePickerRangeOptions.name] || [];
+          return (
+            <el-form-item
+              label={datePickerRangeOptions.label}
+              prop={datePickerRangeOptions.name}
+            >
+              <el-date-picker
+                type="daterange"
+                placeholder="Pick a Date"
+                format="YYYY-MM-DD"
+                size={datePickerRangeOptions.size}
+                v-model={formModel[datePickerRangeOptions.name]}
+              />
+            </el-form-item>
+          );
         case 'Card':
           const cardOptions = (config as CardConfigType).options;
           return (
