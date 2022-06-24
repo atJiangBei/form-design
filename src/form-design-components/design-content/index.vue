@@ -15,7 +15,10 @@
       <!-- <div>{{ JSON.stringify(formModel) }}</div> -->
     </header>
     <section>
-      <div class="design-content-body">
+      <div
+        class="design-content-body"
+        :class="{ 'has-data': usedRenderData.length }"
+      >
         <div class="no-data-tip" v-if="!usedRenderData.length">
           请从左侧列表中选择一个组件 然后用鼠标拖动组件放置于此处
         </div>
@@ -61,10 +64,15 @@
         "
         v-if="previewDialogVisible"
       >
-        <render-form
+        <!-- <render-form
           :usedRenderData="usedRenderData"
           :formRules="formRules"
           :formModel="formModel"
+          :formConfig="formConfig"
+        ></render-form> -->
+        <render-form
+          :usedRenderData="usedRenderData"
+          :formRules="formRules"
           :formConfig="formConfig"
         ></render-form>
       </div>
@@ -191,9 +199,13 @@ export default defineComponent({
       border-radius: 5px;
     }
     .design-content-body {
+      position: relative;
       background: #fff;
       min-height: 100%;
-      position: relative;
+      box-sizing: border-box;
+      &.has-data {
+        padding-bottom: 100px;
+      }
     }
     .no-data-tip {
       z-index: 0;

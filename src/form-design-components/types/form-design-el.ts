@@ -6,7 +6,7 @@ export type CardConfigType = {
   name: string;
   type: 'Card';
   id: string;
-  icon: 'Grid';
+  icon: string;
   options: CardConfigOptionsType;
   list: [];
 };
@@ -24,7 +24,7 @@ export type GridConfigType = {
   name: string;
   type: 'Grid';
   id: string;
-  icon: 'Grid';
+  icon: string;
   options: GridConfigOptionsType;
   cols: ColConfigType[];
 };

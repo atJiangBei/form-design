@@ -1,52 +1,19 @@
 <template>
   <span class="label-item">
     <span>
-      <el-icon>
+      <!-- <el-icon>
         <component :is="icon" />
-      </el-icon>
+      </el-icon> -->
+      <svg-icon title="全屏" :icon="icon" className="side-icon" />
       {{ label }}
     </span>
   </span>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  Grid,
-  Tools,
-  Edit,
-  Check,
-  Select,
-  EditPen,
-  Checked,
-  TurnOff,
-  Pointer,
-  Timer,
-  Clock,
-  Operation,
-  Picture,
-  Link,
-  CollectionTag,
-} from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'label-item',
-  components: {
-    Grid,
-    Tools,
-    Edit,
-    Check,
-    Select,
-    EditPen,
-    Checked,
-    TurnOff,
-    Pointer,
-    Timer,
-    Clock,
-    Operation,
-    Picture,
-    Link,
-    CollectionTag,
-  },
   props: {
     label: {
       type: String,
@@ -72,7 +39,8 @@ export default defineComponent({
   overflow: hidden;
   background: #f1f2f3;
   cursor: move;
-  .el-icon {
+  color: #409eff;
+  .side-icon {
     margin-left: 0.35em;
     margin-right: 0.35em;
     vertical-align: -0.15em;

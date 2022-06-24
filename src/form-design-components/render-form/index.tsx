@@ -10,6 +10,7 @@ export default defineComponent({
     },
     formModel: {
       type: Object,
+      default: () => ({}),
     },
     formRules: {
       type: Object,

@@ -30,6 +30,50 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const initBasic = () => {
+      const { templateConfig: config, formModel } = props;
+      const { type } = config;
+      switch (type) {
+        case 'Input':
+          const inputOptions = (config as InputConfigType).options;
+          formModel[inputOptions.name] = formModel[inputOptions.name] || '';
+          return;
+        case 'Textarea':
+          const textareaOptions = (config as TextareaConfigType).options;
+          formModel[textareaOptions.name] =
+            formModel[textareaOptions.name] || '';
+          return;
+        case 'InputNumber':
+          const inputNumberOptions = (config as InputNumberConfigType).options;
+          formModel[inputNumberOptions.name] =
+            formModel[inputNumberOptions.name] || 0;
+          return;
+        case 'Select':
+          const selectOptions = (config as SelectConfigType).options;
+          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
+          return;
+        case 'SelectMultiple':
+          const selectMultipleOptions = (config as SelectMultipleConfigType)
+            .options;
+          formModel[selectMultipleOptions.name] =
+            formModel[selectMultipleOptions.name] || [];
+          return;
+        case 'DatePicker':
+          const datePickerOptions = (config as DatePickerConfigType).options;
+          formModel[datePickerOptions.name] =
+            formModel[datePickerOptions.name] || '';
+          return;
+        case 'DatePickerRange':
+          const datePickerRangeOptions = (config as DatePickerRangeConfigType)
+            .options;
+          formModel[datePickerRangeOptions.name] =
+            formModel[datePickerRangeOptions.name] || [];
+          return;
+        default:
+          break;
+      }
+    };
+    initBasic();
     const render = (config: AllComponentType) => {
       const { formModel } = props;
       const { type } = config;
@@ -53,7 +97,6 @@ export default defineComponent({
           );
         case 'Input':
           const inputOptions = (config as InputConfigType).options;
-          formModel[inputOptions.name] = formModel[inputOptions.name] || '';
           return (
             <el-form-item label={inputOptions.label} prop={inputOptions.name}>
               <el-input
@@ -66,8 +109,6 @@ export default defineComponent({
           );
         case 'Textarea':
           const textareaOptions = (config as TextareaConfigType).options;
-          formModel[textareaOptions.name] =
-            formModel[textareaOptions.name] || '';
           return (
             <el-form-item
               label={textareaOptions.label}
@@ -86,8 +127,6 @@ export default defineComponent({
           );
         case 'InputNumber':
           const inputNumberOptions = (config as InputNumberConfigType).options;
-          formModel[inputNumberOptions.name] =
-            formModel[inputNumberOptions.name] || 0;
           return (
             <el-form-item
               label={inputNumberOptions.label}
@@ -105,7 +144,6 @@ export default defineComponent({
           );
         case 'Select':
           const selectOptions = (config as SelectConfigType).options;
-          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
           return (
             <el-form-item label={selectOptions.label} prop={selectOptions.name}>
               <el-select
@@ -130,8 +168,6 @@ export default defineComponent({
         case 'SelectMultiple':
           const selectMultipleOptions = (config as SelectMultipleConfigType)
             .options;
-          formModel[selectMultipleOptions.name] =
-            formModel[selectMultipleOptions.name] || [];
           return (
             <el-form-item
               label={selectMultipleOptions.label}
@@ -171,8 +207,6 @@ export default defineComponent({
           );
         case 'DatePicker':
           const datePickerOptions = (config as DatePickerConfigType).options;
-          formModel[datePickerOptions.name] =
-            formModel[datePickerOptions.name] || '';
           return (
             <el-form-item
               label={datePickerOptions.label}
@@ -190,8 +224,6 @@ export default defineComponent({
         case 'DatePickerRange':
           const datePickerRangeOptions = (config as DatePickerRangeConfigType)
             .options;
-          formModel[datePickerRangeOptions.name] =
-            formModel[datePickerRangeOptions.name] || [];
           return (
             <el-form-item
               label={datePickerRangeOptions.label}
@@ -212,6 +244,7 @@ export default defineComponent({
             <el-card header={cardOptions.header} shadow={cardOptions.shadow}>
               <RenderFormItem
                 usedRenderData={(config as CardConfigType).list}
+                formModel={formModel}
               />
             </el-card>
           );
@@ -222,7 +255,10 @@ export default defineComponent({
                 {(config as GridConfigType).cols.map((colItem) => {
                   return (
                     <el-col span={colItem.options.span}>
-                      <RenderFormItem usedRenderData={colItem.list} />
+                      <RenderFormItem
+                        usedRenderData={colItem.list}
+                        formModel={formModel}
+                      />
                     </el-col>
                   );
                 })}

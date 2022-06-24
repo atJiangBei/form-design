@@ -42,6 +42,50 @@ export default defineComponent({
     const onCopy = (id: string) => {
       emit('copy', id);
     };
+    const initBasic = () => {
+      const { config } = props;
+      const { type } = config;
+      switch (type) {
+        case 'Input':
+          const inputOptions = (config as InputConfigType).options;
+          formModel[inputOptions.name] = formModel[inputOptions.name] || '';
+          return;
+        case 'Textarea':
+          const textareaOptions = (config as TextareaConfigType).options;
+          formModel[textareaOptions.name] =
+            formModel[textareaOptions.name] || '';
+          return;
+        case 'InputNumber':
+          const inputNumberOptions = (config as InputNumberConfigType).options;
+          formModel[inputNumberOptions.name] =
+            formModel[inputNumberOptions.name] || 0;
+          return;
+        case 'Select':
+          const selectOptions = (config as SelectConfigType).options;
+          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
+          return;
+        case 'SelectMultiple':
+          const selectMultipleOptions = (config as SelectMultipleConfigType)
+            .options;
+          formModel[selectMultipleOptions.name] =
+            formModel[selectMultipleOptions.name] || [];
+          return;
+        case 'DatePicker':
+          const datePickerOptions = (config as DatePickerConfigType).options;
+          formModel[datePickerOptions.name] =
+            formModel[datePickerOptions.name] || '';
+          return;
+        case 'DatePickerRange':
+          const datePickerRangeOptions = (config as DatePickerRangeConfigType)
+            .options;
+          formModel[datePickerRangeOptions.name] =
+            formModel[datePickerRangeOptions.name] || [];
+          return;
+        default:
+          break;
+      }
+    };
+    initBasic();
     const render = (config: AllComponentType) => {
       const { type } = config;
 
@@ -83,8 +127,6 @@ export default defineComponent({
           );
         case 'Input':
           const inputOptions = (config as InputConfigType).options;
-          formModel[inputOptions.name] = formModel[inputOptions.name] || '';
-          console.log('更新,Input');
           return (
             <ContainerTool
               contentType={type}
@@ -105,8 +147,6 @@ export default defineComponent({
           );
         case 'Textarea':
           const textareaOptions = (config as TextareaConfigType).options;
-          formModel[textareaOptions.name] =
-            formModel[textareaOptions.name] || '';
           return (
             <ContainerTool
               contentType={type}
@@ -132,8 +172,6 @@ export default defineComponent({
           );
         case 'InputNumber':
           const inputNumberOptions = (config as InputNumberConfigType).options;
-          formModel[inputNumberOptions.name] =
-            formModel[inputNumberOptions.name] || 0;
           return (
             <ContainerTool
               contentType={type}
@@ -158,7 +196,7 @@ export default defineComponent({
           );
         case 'Select':
           const selectOptions = (config as SelectConfigType).options;
-          formModel[selectOptions.name] = formModel[selectOptions.name] || '';
+
           return (
             <ContainerTool
               contentType={type}
@@ -193,8 +231,6 @@ export default defineComponent({
         case 'SelectMultiple':
           const selectMultipleOptions = (config as SelectMultipleConfigType)
             .options;
-          formModel[selectMultipleOptions.name] =
-            formModel[selectMultipleOptions.name] || [];
           return (
             <ContainerTool
               contentType={type}
@@ -248,8 +284,7 @@ export default defineComponent({
           );
         case 'DatePicker':
           const datePickerOptions = (config as DatePickerConfigType).options;
-          formModel[datePickerOptions.name] =
-            formModel[datePickerOptions.name] || '';
+
           return (
             <ContainerTool
               contentType={type}
@@ -274,8 +309,7 @@ export default defineComponent({
         case 'DatePickerRange':
           const datePickerRangeOptions = (config as DatePickerRangeConfigType)
             .options;
-          formModel[datePickerRangeOptions.name] =
-            formModel[datePickerRangeOptions.name] || [];
+
           return (
             <ContainerTool
               contentType={type}

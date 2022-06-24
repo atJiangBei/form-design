@@ -7,9 +7,10 @@
             <draggable
               class="label-list"
               item-key="id"
-              v-model="containerComponents"
-              :group="{ name: 'content', pull: 'clone' }"
+              :group="{ name: 'content', pull: 'clone', put: false }"
+              :sort="false"
               :clone="cloneData"
+              v-model="containerComponents"
             >
               <template #item="{ element }">
                 <label-item :label="element.name" :icon="element.icon">
@@ -23,9 +24,10 @@
             <draggable
               class="label-list"
               item-key="id"
-              v-model="basicComponents"
               :group="{ name: 'content', pull: 'clone', put: false }"
+              :sort="false"
               :clone="cloneData"
+              v-model="basicComponents"
             >
               <template #item="{ element }">
                 <label-item :label="element.name" :icon="element.icon">

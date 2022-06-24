@@ -9,7 +9,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     name: '卡片',
     type: 'Card',
     id: 'asfdsfsd',
-    icon: 'Grid',
+    icon: 'card',
     options: {
       header: 'card',
       shadow: 'hover',
@@ -20,7 +20,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     name: '两栅',
     type: 'Grid',
     id: 'asfdsfsd',
-    icon: 'Grid',
+    icon: 'grid-2',
     options: {},
     cols: [
       {
@@ -45,7 +45,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     name: '三栅',
     type: 'Grid',
     id: 'fkghfjgh',
-    icon: 'Grid',
+    icon: 'grid-3',
     options: {},
     cols: [
       {
@@ -78,7 +78,7 @@ export const containerComponents = ref<ContainerComponentsType>([
     name: '四栅',
     type: 'Grid',
     id: 'hdfvsdgsd',
-    icon: 'Grid',
+    icon: 'grid-4',
     options: {},
     cols: [
       {
@@ -122,7 +122,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '分割线',
     type: 'Divider',
     id: 'fdsfdsgfj',
-    icon: 'Tools',
+    icon: 'divider',
     options: {
       title: 'Title',
       direction: 'horizontal',
@@ -134,7 +134,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '按钮',
     type: 'Button',
     id: 'asdasdas',
-    icon: 'Tools',
+    icon: 'button',
     options: {
       name: '',
       label: '',
@@ -148,7 +148,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '单行输入',
     type: 'Input',
     id: 'dasdas',
-    icon: 'Edit',
+    icon: 'input',
     options: {
       name: 'Input',
       type: 'text',
@@ -162,7 +162,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '多行输入',
     type: 'Textarea',
     id: 'dgdfhgj',
-    icon: 'Edit',
+    icon: 'textarea',
     options: {
       name: 'Textarea',
       label: 'Textarea',
@@ -178,7 +178,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '数字输入',
     type: 'InputNumber',
     id: 'sdgdfgdf',
-    icon: 'Edit',
+    icon: 'inputNumber',
     options: {
       name: 'InputNumber',
       label: 'InputNumber',
@@ -194,7 +194,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '单选下拉',
     type: 'Select',
     id: 'dbfgnfg',
-    icon: 'Edit',
+    icon: 'select',
     options: {
       name: 'Select',
       label: 'Select',
@@ -209,7 +209,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '多选下拉',
     type: 'SelectMultiple',
     id: 'vsdfsdfsd',
-    icon: 'Edit',
+    icon: 'selectMultiple',
     options: {
       name: 'Select',
       label: 'Multiple',
@@ -224,7 +224,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '链接',
     type: 'Link',
     id: 'bfdnjmgh',
-    icon: 'Edit',
+    icon: 'link',
     options: {
       type: 'primary',
       underline: true,
@@ -237,7 +237,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '日期',
     type: 'DatePicker',
     id: 'jvjhxddf',
-    icon: 'Timer',
+    icon: 'date',
     options: {
       name: 'DatePicker',
       label: 'Date',
@@ -249,7 +249,7 @@ export const basicComponents = ref<BasicComponentsType>([
     name: '日期范围',
     type: 'DatePickerRange',
     id: 'sdgdfhfg',
-    icon: 'Timer',
+    icon: 'dateRange',
     options: {
       name: 'DatePickerRange',
       label: 'DateRange',
@@ -260,7 +260,7 @@ export const basicComponents = ref<BasicComponentsType>([
   // {
   //   type: 'TimePicker',
   //   id: 'asdasdasdas',
-  //   icon: 'Clock',
+  //   icon: 'time',
   // },
   // {
   //   type: 'Image',

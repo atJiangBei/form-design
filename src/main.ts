@@ -3,9 +3,12 @@ import App from './App.vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import '@/style';
-import Components from '@/form-design-components';
+import FormDesign from '@/form-design-components';
 import draggable from 'vuedraggable';
+import '@/svgs/loadSvg';
+import CommonComponents from './components';
 
 const app = createApp(App);
 app.component('draggable', draggable);
-app.use(Components).use(ElementPlus).mount('#app');
+
+app.use(CommonComponents).use(FormDesign).use(ElementPlus).mount('#app');
