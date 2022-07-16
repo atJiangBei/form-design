@@ -15,6 +15,7 @@ export const hasValueComponentTypes = [
   'SelectMultiple',
   'DatePicker',
   'DatePickerRange',
+  'Table',
 ];
 
 export const deleteComponent = (
