@@ -82,6 +82,10 @@ export default defineComponent({
           formModel[datePickerRangeOptions.name] =
             formModel[datePickerRangeOptions.name] || [];
           return;
+        case 'Table':
+          const tableOptions = (config as TableConfigType).options;
+          formModel[tableOptions.name] = formModel[tableOptions.name] || [];
+          return;
         default:
           break;
       }
