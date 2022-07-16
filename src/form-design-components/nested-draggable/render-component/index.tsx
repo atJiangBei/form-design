@@ -16,6 +16,7 @@ import {
   LinkConfigType,
   DatePickerConfigType,
   DatePickerRangeConfigType,
+  TableConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
 import { formCurrentProvideKey } from '../../types/provide-inject';
@@ -331,6 +332,27 @@ export default defineComponent({
               </el-form-item>
             </ContainerTool>
           );
+        case 'Table':
+          const tableColumns = (config as TableConfigType).columns;
+          return (
+            <ContainerTool
+              contentType={type}
+              selected={selectedItem.value.id === config.id}
+              onSelected={() => onActived(config)}
+              onDelete={() => onDelete(config.id)}
+            >
+              <el-table>
+                {tableColumns.map((column) => {
+                  return (
+                    <el-table-column
+                      label={column.label}
+                      prop={column.prop}
+                    ></el-table-column>
+                  );
+                })}
+              </el-table>
+            </ContainerTool>
+          );
         // case 'Radio':
         //   return (
         //     <el-radio-group>
@@ -383,16 +405,6 @@ export default defineComponent({
         //       initial-index={4}
         //       fit="cover"
         //     />
-        //   );
-        // case 'Link':
-        //   return (
-        //     <el-link
-        //       type="primary"
-        //       href="https://element.eleme.io"
-        //       target="_blank"
-        //     >
-        //       element
-        //     </el-link>
         //   );
         case 'Card':
           const cardOptions = (config as CardConfigType).options;

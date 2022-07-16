@@ -29,13 +29,12 @@ export type GridConfigType = {
   cols: ColConfigType[];
 };
 
-export type ContainerComponentsType = [
-  CardConfigType,
-  GridConfigType,
-  GridConfigType,
-  GridConfigType
-];
-
+export type ContainerComponentsType = Array<
+  CardConfigType | GridConfigType | ColConfigType
+>;
+/*
+Button
+*/
 export type ButtonConfigOptionsType = {
   name: string;
   label: string;
@@ -195,6 +194,29 @@ export type DatePickerRangeConfigType = {
   options: DatePickerRangeConfigOptionsType;
 };
 
+/*
+ *table column
+ */
+export type ColumnConfigType = {
+  id: string;
+  prop: string;
+  label: string;
+  contentType: string;
+  selectOptions: any[];
+};
+export type TableConfigOptionsType = {
+  name: string;
+};
+
+export type TableConfigType = {
+  name: string;
+  type: 'Table';
+  id: string;
+  icon: string;
+  options: TableConfigOptionsType;
+  columns: ColumnConfigType[];
+};
+
 export type BasicComponentsType = [
   DividerConfigType,
   ButtonConfigType,
@@ -205,20 +227,12 @@ export type BasicComponentsType = [
   SelectMultipleConfigType,
   LinkConfigType,
   DatePickerConfigType,
-  DatePickerRangeConfigType
+  DatePickerRangeConfigType,
+  TableConfigType
 ];
 
 export type AllComponentType =
-  | CardConfigType
-  | GridConfigType
-  | ColConfigType
-  | ButtonConfigType
-  | InputConfigType
-  | DividerConfigType
-  | TextareaConfigType
-  | InputNumberConfigType
-  | SelectConfigType
-  | SelectMultipleConfigType
-  | LinkConfigType
-  | DatePickerConfigType
-  | DatePickerRangeConfigType;
+  | ContainerComponentsType[number]
+  | BasicComponentsType[number];
+
+export type BasicTemplateTypes = BasicComponentsType[number]['type'][];

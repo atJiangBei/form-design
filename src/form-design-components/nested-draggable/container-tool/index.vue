@@ -72,7 +72,7 @@ export default defineComponent({
     top: 0;
     background-color: var(--el-color-primary);
     color: #fff;
-    z-index: 1;
+    z-index: 2;
     font-size: 12px;
     padding: 0 2px;
   }

@@ -141,3 +141,29 @@ export function emptyObj(obj: { [key: string]: any }) {
     delete obj[k];
   }
 }
+
+export const createDefaultFormItemValue = (renderType: string) => {
+  switch (renderType) {
+    case 'Input':
+      return '';
+    case 'InputNumber':
+      return 0;
+    case 'Textarea':
+      return '';
+    case 'Select':
+      return '';
+    case 'SelectMultiple':
+      return [];
+    case 'DatePicker':
+      return '';
+    case 'DatePickerRange':
+      return [];
+    case 'DateTimePicker':
+      return '';
+    case 'DateTimePickerRange':
+      return [];
+    case 'Table':
+      return [];
+  }
+  return '';
+};

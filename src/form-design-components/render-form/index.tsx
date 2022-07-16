@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import RenderFormItem from './render-form-item/index';
 
 export default defineComponent({
@@ -10,7 +10,8 @@ export default defineComponent({
     },
     formModel: {
       type: Object,
-      default: () => ({}),
+      //当默认为普通对象时{}，给其添加某个key的value为普通对象（例如[]）时，此数据的变更将不会触发更新
+      default: () => reactive({}),
     },
     formRules: {
       type: Object,

@@ -12,7 +12,6 @@
           其它测试数据
         </el-button>
       </el-button-group>
-      <!-- <div>{{ JSON.stringify(formModel) }}</div> -->
     </header>
     <section>
       <div
@@ -53,7 +52,7 @@
         ></code-editor>
       </template>
     </el-dialog>
-    <el-dialog v-model="previewDialogVisible" title="Preview" width="1000px">
+    <el-dialog v-model="previewDialogVisible" title="Preview" width="1050px">
       <div
         style="
           height: 500px;
@@ -64,12 +63,6 @@
         "
         v-if="previewDialogVisible"
       >
-        <!-- <render-form
-          :usedRenderData="usedRenderData"
-          :formRules="formRules"
-          :formModel="formModel"
-          :formConfig="formConfig"
-        ></render-form> -->
         <render-form
           :usedRenderData="usedRenderData"
           :formRules="formRules"

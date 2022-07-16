@@ -11,6 +11,7 @@ import RenderSelectMultiple from '../render-basic/render-select-multiple';
 import RenderCard from '../render-basic/render-card';
 import RenderLink from '../render-basic/render-link';
 import RenderDate from '../render-basic/render-date';
+import RenderTable from '../render-basic/render-table/index.vue';
 
 export default defineComponent({
   name: 'render-item-setting',
@@ -18,14 +19,16 @@ export default defineComponent({
     const activeNames = ref(['basic', 'complex']);
 
     return () => {
-      const { type, options } = selectedItem.value;
+      const { type, options, columns } = selectedItem.value;
       if (!options) {
         return <el-empty image-size={100} />;
       }
       return (
         <el-collapse v-model={activeNames.value}>
           <el-collapse-item title="基本属性" name="basic">
-            <el-form label-width="90px">{renderItem(type, options)}</el-form>
+            <el-form label-width="90px">
+              {renderItem(type, options, columns)}
+            </el-form>
           </el-collapse-item>
           {/* <el-collapse-item title="高级属性" name="complex">
             <el-empty image-size={100} />
@@ -36,7 +39,7 @@ export default defineComponent({
   },
 });
 
-function renderItem(type: string, options: any) {
+function renderItem(type: string, options: any, columns: any) {
   type = type.toUpperCase();
   switch (type) {
     case 'BUTTON':
@@ -64,5 +67,7 @@ function renderItem(type: string, options: any) {
     case 'CARD':
       return <RenderCard modelOptions={options} />;
     //return <RenderSelectMultiple modelOptions={options} />;
+    case 'TABLE':
+      return <RenderTable columns={columns}></RenderTable>;
   }
 }

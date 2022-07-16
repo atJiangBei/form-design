@@ -1,6 +1,6 @@
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, reactive, PropType } from 'vue';
 import RenderFormItem from '../render-form-item/index';
-
+import { Plus, Delete } from '@element-plus/icons-vue';
 import {
   CardConfigType,
   GridConfigType,
@@ -14,8 +14,143 @@ import {
   LinkConfigType,
   DatePickerConfigType,
   DatePickerRangeConfigType,
+  TableConfigType,
   AllComponentType,
 } from '@/form-design-components/types/form-design-el';
+import { createDefaultFormItemValue } from '@/form-design-components/utils/crud';
+
+const TableCell = defineComponent({
+  name: 'TableCell',
+  props: {
+    column: {
+      type: Object as PropType<any>,
+    },
+    row: {
+      type: Object as PropType<any>,
+    },
+  },
+  setup(props) {
+    const renderForm = () => {
+      const { column, row } = props;
+
+      switch (column.contentType) {
+        case 'Input':
+          return <el-input v-model={row[column.prop]} size="small"></el-input>;
+        case 'InputNumber':
+          return (
+            <el-input-number
+              v-model={row[column.prop]}
+              size="small"
+            ></el-input-number>
+          );
+        case 'Select':
+          return (
+            <el-select v-model={row[column.prop]} size="small">
+              {column.selectOptions.map((item: any) => {
+                return (
+                  <el-option value={item.value} label={item.label}></el-option>
+                );
+              })}
+            </el-select>
+          );
+        case 'SelectMultiple':
+          return (
+            <el-select v-model={row[column.prop]} size="small" multiple>
+              {column.selectOptions.map((item: any) => {
+                return (
+                  <el-option value={item.value} label={item.label}></el-option>
+                );
+              })}
+            </el-select>
+          );
+        case 'DatePicker':
+          return (
+            <el-date-picker
+              v-model={row[column.prop]}
+              type="date"
+              size="small"
+            />
+          );
+        case 'DateTimePicker':
+          return (
+            <el-date-picker
+              v-model={row[column.prop]}
+              type="datetime"
+              size="small"
+            />
+          );
+      }
+    };
+    return () => {
+      return renderForm();
+    };
+  },
+});
+const BlockTable = defineComponent({
+  name: 'BolckTable',
+  props: {
+    columns: {
+      type: Array as PropType<any[]>,
+      default: () => [],
+    },
+    tableData: {
+      type: Array as PropType<any[]>,
+      default: () => [],
+    },
+  },
+  setup(props) {
+    const add = () => {
+      const { columns, tableData } = props;
+      const row: any = {};
+      columns.forEach((column) => {
+        row[column.prop] = createDefaultFormItemValue(column.contentType);
+      });
+      console.log(tableData);
+      tableData.push(row);
+    };
+    const deleteColumn = (index: number) => {
+      props.tableData.splice(index, 1);
+    };
+    return () => {
+      const { columns, tableData } = props;
+
+      return (
+        <div class="block-table-container ym-table">
+          <div class="block-table-header">
+            <el-icon color="#0052d9" onClick={add}>
+              <Plus />
+            </el-icon>
+          </div>
+          <el-table border stripe data={tableData}>
+            {columns.map((column) => {
+              return (
+                <el-table-column label={column.label} prop={column.prop}>
+                  {{
+                    default: ({ row }: { row: any }) => {
+                      return <TableCell column={column} row={row} />;
+                    },
+                  }}
+                </el-table-column>
+              );
+            })}
+            <el-table-column width="70px">
+              {{
+                default: ({ $index }: { $index: number }) => (
+                  <el-button
+                    icon={Delete}
+                    type="danger"
+                    size="small"
+                    onClick={() => deleteColumn($index)}
+                  ></el-button>
+                ),
+              }}
+            </el-table-column>
+          </el-table>
+        </div>
+      );
+    };
+  },
+});
 
 export default defineComponent({
   name: 'FormTemplate',
@@ -68,6 +203,9 @@ export default defineComponent({
             .options;
           formModel[datePickerRangeOptions.name] =
             formModel[datePickerRangeOptions.name] || [];
+        case 'Table':
+          const tableOptions = (config as TableConfigType).options;
+          formModel[tableOptions.name] = formModel[tableOptions.name] || [];
           return;
         default:
           break;
@@ -76,8 +214,8 @@ export default defineComponent({
     initBasic();
     const render = (config: AllComponentType) => {
       const { formModel } = props;
+
       const { type } = config;
-      console.log('config', config);
       switch (type) {
         case 'Divider':
           const dividerOptions = (config as DividerConfigType).options;
@@ -97,6 +235,7 @@ export default defineComponent({
           );
         case 'Input':
           const inputOptions = (config as InputConfigType).options;
+
           return (
             <el-form-item label={inputOptions.label} prop={inputOptions.name}>
               <el-input
@@ -109,6 +248,7 @@ export default defineComponent({
           );
         case 'Textarea':
           const textareaOptions = (config as TextareaConfigType).options;
+
           return (
             <el-form-item
               label={textareaOptions.label}
@@ -127,6 +267,7 @@ export default defineComponent({
           );
         case 'InputNumber':
           const inputNumberOptions = (config as InputNumberConfigType).options;
+
           return (
             <el-form-item
               label={inputNumberOptions.label}
@@ -144,6 +285,7 @@ export default defineComponent({
           );
         case 'Select':
           const selectOptions = (config as SelectConfigType).options;
+
           return (
             <el-form-item label={selectOptions.label} prop={selectOptions.name}>
               <el-select
@@ -168,6 +310,7 @@ export default defineComponent({
         case 'SelectMultiple':
           const selectMultipleOptions = (config as SelectMultipleConfigType)
             .options;
+
           return (
             <el-form-item
               label={selectMultipleOptions.label}
@@ -207,6 +350,7 @@ export default defineComponent({
           );
         case 'DatePicker':
           const datePickerOptions = (config as DatePickerConfigType).options;
+
           return (
             <el-form-item
               label={datePickerOptions.label}
@@ -224,6 +368,7 @@ export default defineComponent({
         case 'DatePickerRange':
           const datePickerRangeOptions = (config as DatePickerRangeConfigType)
             .options;
+
           return (
             <el-form-item
               label={datePickerRangeOptions.label}
@@ -238,13 +383,23 @@ export default defineComponent({
               />
             </el-form-item>
           );
+
+        case 'Table':
+          const { options: tableOptions, columns: tableColumns } =
+            config as TableConfigType;
+          return (
+            <BlockTable
+              columns={tableColumns}
+              tableData={formModel[tableOptions.name]}
+            ></BlockTable>
+          );
         case 'Card':
           const cardOptions = (config as CardConfigType).options;
           return (
             <el-card header={cardOptions.header} shadow={cardOptions.shadow}>
               <RenderFormItem
-                usedRenderData={(config as CardConfigType).list}
                 formModel={formModel}
+                usedRenderData={(config as CardConfigType).list}
               />
             </el-card>
           );
@@ -256,8 +411,8 @@ export default defineComponent({
                   return (
                     <el-col span={colItem.options.span}>
                       <RenderFormItem
-                        usedRenderData={colItem.list}
                         formModel={formModel}
+                        usedRenderData={colItem.list}
                       />
                     </el-col>
                   );

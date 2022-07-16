@@ -36,7 +36,16 @@ export default defineComponent({
 <style lang="less" scoped>
 .design-setting {
   width: 260px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #999b9c;
+    border-radius: 5px;
+  }
 }
+
 .design-setting-content {
   padding: 10px;
   ::v-deep .el-collapse-item__header {

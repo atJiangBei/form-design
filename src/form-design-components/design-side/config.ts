@@ -257,34 +257,61 @@ export const basicComponents = ref<BasicComponentsType>([
       disabled: false,
     },
   },
-  // {
-  //   type: 'TimePicker',
-  //   id: 'asdasdasdas',
-  //   icon: 'time',
-  // },
-  // {
-  //   type: 'Image',
-  //   id: 'sdfsdgsd',
-  //   icon: 'Picture',
-  // },
-  // {
-  //   type: 'Radio',
-  //   id: 'sdfsdfsd',
-  //   icon: 'Pointer',
-  // },
-  // {
-  //   type: 'Checkbox',
-  //   id: 'asdassad',
-  //   icon: 'Checked',
-  // },
-  // {
-  //   type: 'Switch',
-  //   id: 'asfasf',
-  //   icon: 'TurnOff',
-  // },
-  // {
-  //   type: 'Slider',
-  //   id: 'sdfsdfsdf',
-  //   icon: 'Operation',
-  // },
+  {
+    name: '表格',
+    type: 'Table',
+    id: 'jdfghs',
+    icon: 'table',
+    options: {
+      name: 'Table',
+    },
+    columns: [
+      {
+        id: 'hdfsds',
+        prop: 'column',
+        label: 'column',
+        contentType: 'Input',
+        selectOptions: [],
+      },
+      {
+        id: 'kykfds',
+        prop: 'column',
+        label: 'column',
+        contentType: 'Input',
+        selectOptions: [],
+      },
+    ],
+  },
 ]);
+
+const mainContainerType = 'Form';
+
+const primaryVesselTypes = ['Card'];
+
+const layoutContainerTypes = ['Grid', 'Col'];
+
+const basicGraggableTypes = basicComponents.value.map((com) => com.type);
+
+export const canOrNotBeMoved = (currentType: string, toType: string) => {
+  if (
+    primaryVesselTypes.includes(currentType) &&
+    toType === mainContainerType
+  ) {
+    return true;
+  }
+  if (
+    layoutContainerTypes.includes(currentType) &&
+    primaryVesselTypes.includes(toType)
+  ) {
+    return true;
+  }
+  type BasicType = typeof basicGraggableTypes[number];
+  if (
+    basicGraggableTypes.includes(currentType as BasicType) &&
+    (layoutContainerTypes.includes(toType) ||
+      primaryVesselTypes.includes(toType))
+  ) {
+    return true;
+  }
+  return false;
+};

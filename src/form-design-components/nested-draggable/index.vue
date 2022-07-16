@@ -5,11 +5,11 @@
     item-key="id"
     animation="300"
     :list="tasks"
-    group="content"
+    :move="checkMove"
     :group="{ name: 'content' }"
   >
     <template #item="{ element }">
-      <li class="draggable-nested-item">
+      <li class="draggable-nested-item" :data-type="element.type">
         <render-component
           :config="element"
           @actived="onActived"
@@ -45,10 +45,16 @@ export default defineComponent({
     const onDelete = (...arg: Array<any>) => {
       emit('delete', ...arg);
     };
+    const checkMove = (evt: any) => {
+      //const currentType = evt.dragged.dataset.type;
+      //const toType = evt.to.dataset.type;
+      return true;
+    };
     return {
       onCopy,
       onDelete,
       onActived,
+      checkMove,
     };
   },
 });
